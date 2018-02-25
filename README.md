@@ -1,2 +1,8 @@
-# cs5200-course-mgmt-system
-This is the git repository for the Spring 2018 project for CS5200: Course Management System using SpringBoot
+# CS 5200 : Course Management System using SpringBoot 
+This is the git repository for the **Spring 2018** project **Course Management System using SpringBoot (CourseNext)** at Northeastern University.
+The project is mentored by **Prof. Jose Annunziato** and is executed by **Biswaraj Kar** and **Bishwajeet Dey**.
+
+Below are the main pages for the project:
+* [Project](https://github.com/biswarajkar/cs5200-course-mgmt-system/wiki/Project)
+* [Design](https://github.com/biswarajkar/cs5200-course-mgmt-system/wiki/Design)
+* [Report](https://github.com/biswarajkar/cs5200-course-mgmt-system/blob/master/CourseNext%20Project%20Report.pdf)
