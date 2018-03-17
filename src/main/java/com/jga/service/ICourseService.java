@@ -11,6 +11,7 @@ import com.jga.entity.Course;
  * @author dey
  *
  */
+
 public interface ICourseService {
 	public Course getCourseById(int id);
 	

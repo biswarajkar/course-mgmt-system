@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.jga.entity.Course;
 import com.jga.repository.CourseRepository;
@@ -15,6 +16,7 @@ import com.jga.repository.CourseRepository;
  * @author dey
  *
  */
+@Service
 public class CourseService implements ICourseService {
 
 	@Autowired

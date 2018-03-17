@@ -30,7 +30,7 @@ public class Course implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "article_id")
+	@Column(name = "courseId")
 	private int courseId;
 
 	@Column(name = "name", nullable = false)
@@ -43,11 +43,11 @@ public class Course implements Serializable {
 	private String description;
 
 	@Column(name = "createDate", nullable = false)
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
 
 	@Column(name = "updateDate")
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date updateDate;
 
 	@Column(name = "displayGridOrder")
