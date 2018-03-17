@@ -42,9 +42,9 @@ public class Course implements Serializable {
 	@Column(name = "description", nullable = false)
 	private String description;
 
-	@Column(name = "createDate", nullable = false)
+	@Column(name = "createDate", nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date createDate;
+	private Date createDate = new Date();
 
 	@Column(name = "updateDate")
 	@Temporal(TemporalType.TIMESTAMP)
