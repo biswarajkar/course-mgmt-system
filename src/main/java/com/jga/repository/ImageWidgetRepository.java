@@ -8,4 +8,5 @@ import com.jga.entity.ImageWidget;
  *
  */
 @Transactional
-public interface ImageWidgetRepository extends WidgetBaseRepository<ImageWidget> { }
+public interface ImageWidgetRepository extends WidgetBaseRepository<ImageWidget> {
+}

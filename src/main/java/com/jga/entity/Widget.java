@@ -24,7 +24,7 @@ import javax.persistence.Table;
 public class Widget implements Serializable {
 
 	private static final long serialVersionUID = 2342067425654448001L;
-	
+
 	/**
 	 * Data Members
 	 */
@@ -41,16 +41,16 @@ public class Widget implements Serializable {
 
 	@Column(name = "bottomPosition")
 	private Float bottomPosition;
-	
+
 	@Column(name = "leftPosition")
 	private Float leftPosition;
-	
+
 	@Column(name = "rightPosition")
 	private Float rightPosition;
-	
+
 	@Column(name = "width")
 	private Float width;
-	
+
 	@Column(name = "height")
 	private Float height;
 
@@ -72,7 +72,6 @@ public class Widget implements Serializable {
 	@Column(name = "fitContents")
 	private Boolean fitContents;
 
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -84,14 +83,13 @@ public class Widget implements Serializable {
 		return widgetId;
 	}
 
-
 	/**
-	 * @param widgetId the widgetId to set
+	 * @param widgetId
+	 *            the widgetId to set
 	 */
 	public void setWidgetId(int widgetId) {
 		this.widgetId = widgetId;
 	}
-
 
 	/**
 	 * @return the name
@@ -100,14 +98,13 @@ public class Widget implements Serializable {
 		return name;
 	}
 
-
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	/**
 	 * @return the topPosition
@@ -116,14 +113,13 @@ public class Widget implements Serializable {
 		return topPosition;
 	}
 
-
 	/**
-	 * @param topPosition the topPosition to set
+	 * @param topPosition
+	 *            the topPosition to set
 	 */
 	public void setTopPosition(Float topPosition) {
 		this.topPosition = topPosition;
 	}
-
 
 	/**
 	 * @return the bottomPosition
@@ -132,14 +128,13 @@ public class Widget implements Serializable {
 		return bottomPosition;
 	}
 
-
 	/**
-	 * @param bottomPosition the bottomPosition to set
+	 * @param bottomPosition
+	 *            the bottomPosition to set
 	 */
 	public void setBottomPosition(Float bottomPosition) {
 		this.bottomPosition = bottomPosition;
 	}
-
 
 	/**
 	 * @return the leftPosition
@@ -148,14 +143,13 @@ public class Widget implements Serializable {
 		return leftPosition;
 	}
 
-
 	/**
-	 * @param leftPosition the leftPosition to set
+	 * @param leftPosition
+	 *            the leftPosition to set
 	 */
 	public void setLeftPosition(Float leftPosition) {
 		this.leftPosition = leftPosition;
 	}
-
 
 	/**
 	 * @return the rightPosition
@@ -164,14 +158,13 @@ public class Widget implements Serializable {
 		return rightPosition;
 	}
 
-
 	/**
-	 * @param rightPosition the rightPosition to set
+	 * @param rightPosition
+	 *            the rightPosition to set
 	 */
 	public void setRightPosition(Float rightPosition) {
 		this.rightPosition = rightPosition;
 	}
-
 
 	/**
 	 * @return the width
@@ -180,14 +173,13 @@ public class Widget implements Serializable {
 		return width;
 	}
 
-
 	/**
-	 * @param width the width to set
+	 * @param width
+	 *            the width to set
 	 */
 	public void setWidth(Float width) {
 		this.width = width;
 	}
-
 
 	/**
 	 * @return the height
@@ -196,14 +188,13 @@ public class Widget implements Serializable {
 		return height;
 	}
 
-
 	/**
-	 * @param height the height to set
+	 * @param height
+	 *            the height to set
 	 */
 	public void setHeight(Float height) {
 		this.height = height;
 	}
-
 
 	/**
 	 * @return the foregroundColor
@@ -212,14 +203,13 @@ public class Widget implements Serializable {
 		return foregroundColor;
 	}
 
-
 	/**
-	 * @param foregroundColor the foregroundColor to set
+	 * @param foregroundColor
+	 *            the foregroundColor to set
 	 */
 	public void setForegroundColor(String foregroundColor) {
 		this.foregroundColor = foregroundColor;
 	}
-
 
 	/**
 	 * @return the backgroundColor
@@ -228,14 +218,13 @@ public class Widget implements Serializable {
 		return backgroundColor;
 	}
 
-
 	/**
-	 * @param backgroundColor the backgroundColor to set
+	 * @param backgroundColor
+	 *            the backgroundColor to set
 	 */
 	public void setBackgroundColor(String backgroundColor) {
 		this.backgroundColor = backgroundColor;
 	}
-
 
 	/**
 	 * @return the cssClass
@@ -244,14 +233,13 @@ public class Widget implements Serializable {
 		return cssClass;
 	}
 
-
 	/**
-	 * @param cssClass the cssClass to set
+	 * @param cssClass
+	 *            the cssClass to set
 	 */
 	public void setCssClass(String cssClass) {
 		this.cssClass = cssClass;
 	}
-
 
 	/**
 	 * @return the cssStyle
@@ -260,14 +248,13 @@ public class Widget implements Serializable {
 		return cssStyle;
 	}
 
-
 	/**
-	 * @param cssStyle the cssStyle to set
+	 * @param cssStyle
+	 *            the cssStyle to set
 	 */
 	public void setCssStyle(String cssStyle) {
 		this.cssStyle = cssStyle;
 	}
-
 
 	/**
 	 * @return the scrollable
@@ -276,14 +263,13 @@ public class Widget implements Serializable {
 		return scrollable;
 	}
 
-
 	/**
-	 * @param scrollable the scrollable to set
+	 * @param scrollable
+	 *            the scrollable to set
 	 */
 	public void setScrollable(Boolean scrollable) {
 		this.scrollable = scrollable;
 	}
-
 
 	/**
 	 * @return the fitContents
@@ -292,9 +278,9 @@ public class Widget implements Serializable {
 		return fitContents;
 	}
 
-
 	/**
-	 * @param fitContents the fitContents to set
+	 * @param fitContents
+	 *            the fitContents to set
 	 */
 	public void setFitContents(Boolean fitContents) {
 		this.fitContents = fitContents;

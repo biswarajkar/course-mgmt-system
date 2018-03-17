@@ -8,4 +8,5 @@ import com.jga.entity.VideoWidget;
  *
  */
 @Transactional
-public interface VideoWidgetRepository extends WidgetBaseRepository<VideoWidget> { }
+public interface VideoWidgetRepository extends WidgetBaseRepository<VideoWidget> {
+}

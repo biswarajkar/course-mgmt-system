@@ -9,4 +9,5 @@ import com.jga.entity.Widget;
  *
  */
 @Transactional
-public interface WidgetRepository extends WidgetBaseRepository<Widget> { }
+public interface WidgetRepository extends WidgetBaseRepository<Widget> {
+}

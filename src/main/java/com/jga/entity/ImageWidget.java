@@ -1,14 +1,19 @@
 package com.jga.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 /**
  * @author biswaraj
  *
  */
+@Entity
+@Table(name = "ImageWidget")
+@PrimaryKeyJoinColumn(referencedColumnName = "widgetId")
 public class ImageWidget extends Widget {
 
 	private static final long serialVersionUID = 1923699140530704516L;
@@ -19,13 +24,13 @@ public class ImageWidget extends Widget {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "imageId", updatable = false, nullable = false)
 	private int imageId;
-	
+
 	@Column(name = "url")
 	private String url;
-	
+
 	@Column(name = "verticalAlign")
 	private String verticalAlign;
-	
+
 	@Column(name = "horizontalAlign")
 	private String horizontalAlign;
 
@@ -37,7 +42,8 @@ public class ImageWidget extends Widget {
 	}
 
 	/**
-	 * @param imageId the imageId to set
+	 * @param imageId
+	 *            the imageId to set
 	 */
 	public void setImageId(int imageId) {
 		this.imageId = imageId;
@@ -51,7 +57,8 @@ public class ImageWidget extends Widget {
 	}
 
 	/**
-	 * @param url the url to set
+	 * @param url
+	 *            the url to set
 	 */
 	public void setUrl(String url) {
 		this.url = url;
@@ -65,7 +72,8 @@ public class ImageWidget extends Widget {
 	}
 
 	/**
-	 * @param verticalAlign the verticalAlign to set
+	 * @param verticalAlign
+	 *            the verticalAlign to set
 	 */
 	public void setVerticalAlign(String verticalAlign) {
 		this.verticalAlign = verticalAlign;
@@ -79,7 +87,8 @@ public class ImageWidget extends Widget {
 	}
 
 	/**
-	 * @param horizontalAlign the horizontalAlign to set
+	 * @param horizontalAlign
+	 *            the horizontalAlign to set
 	 */
 	public void setHorizontalAlign(String horizontalAlign) {
 		this.horizontalAlign = horizontalAlign;

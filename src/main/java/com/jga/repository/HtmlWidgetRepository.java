@@ -8,4 +8,5 @@ import com.jga.entity.HtmlWidget;
  *
  */
 @Transactional
-public interface HtmlWidgetRepository extends WidgetBaseRepository<HtmlWidget> { }
+public interface HtmlWidgetRepository extends WidgetBaseRepository<HtmlWidget> {
+}

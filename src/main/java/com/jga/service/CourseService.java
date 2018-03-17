@@ -21,7 +21,7 @@ public class CourseService implements ICourseService {
 
 	@Autowired
 	private CourseRepository courseRepository;
-	
+
 	@Override
 	public Course getCourseById(int id) {
 		return courseRepository.findOne(id);
@@ -31,7 +31,7 @@ public class CourseService implements ICourseService {
 	public Collection<Course> getAllCourses() {
 		final Collection<Course> courses = new ArrayList<>();
 		courseRepository.findAll().iterator().forEachRemaining(courses::add);
-		
+
 		return courses;
 	}
 

@@ -1,14 +1,19 @@
 package com.jga.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 /**
  * @author biswaraj
  *
  */
+@Entity
+@Table(name = "GoogleDocWidget")
+@PrimaryKeyJoinColumn(referencedColumnName = "widgetId")
 public class GoogleDocWidget extends Widget {
 
 	private static final long serialVersionUID = -3150515093588410649L;
@@ -19,13 +24,13 @@ public class GoogleDocWidget extends Widget {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "googleDocId", updatable = false, nullable = false)
 	private int googleDocId;
-	
+
 	@Column(name = "url")
 	private String url;
-	
+
 	@Column(name = "editable")
 	private Boolean editable;
-	
+
 	@Column(name = "type")
 	private String type;
 
@@ -37,12 +42,12 @@ public class GoogleDocWidget extends Widget {
 	}
 
 	/**
-	 * @param googleDocId the googleDocId to set
+	 * @param googleDocId
+	 *            the googleDocId to set
 	 */
 	public void setGoogleDocId(int googleDocId) {
 		this.googleDocId = googleDocId;
 	}
-
 
 	/**
 	 * @return the url
@@ -51,14 +56,13 @@ public class GoogleDocWidget extends Widget {
 		return url;
 	}
 
-
 	/**
-	 * @param url the url to set
+	 * @param url
+	 *            the url to set
 	 */
 	public void setUrl(String url) {
 		this.url = url;
 	}
-
 
 	/**
 	 * @return the editable
@@ -67,14 +71,13 @@ public class GoogleDocWidget extends Widget {
 		return editable;
 	}
 
-
 	/**
-	 * @param editable the editable to set
+	 * @param editable
+	 *            the editable to set
 	 */
 	public void setEditable(Boolean editable) {
 		this.editable = editable;
 	}
-
 
 	/**
 	 * @return the type
@@ -83,14 +86,13 @@ public class GoogleDocWidget extends Widget {
 		return type;
 	}
 
-
 	/**
-	 * @param type the type to set
+	 * @param type
+	 *            the type to set
 	 */
 	public void setType(String type) {
 		this.type = type;
 	}
-
 
 	/**
 	 * @return the serialversionuid

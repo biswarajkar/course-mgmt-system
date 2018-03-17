@@ -61,7 +61,8 @@ public class Course implements Serializable {
 	}
 
 	/**
-	 * @param courseId the courseId to set
+	 * @param courseId
+	 *            the courseId to set
 	 */
 	public void setCourseId(int courseId) {
 		this.courseId = courseId;
@@ -75,7 +76,8 @@ public class Course implements Serializable {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -89,7 +91,8 @@ public class Course implements Serializable {
 	}
 
 	/**
-	 * @param identifier the identifier to set
+	 * @param identifier
+	 *            the identifier to set
 	 */
 	public void setIdentifier(String identifier) {
 		this.identifier = identifier;
@@ -103,7 +106,8 @@ public class Course implements Serializable {
 	}
 
 	/**
-	 * @param description the description to set
+	 * @param description
+	 *            the description to set
 	 */
 	public void setDescription(String description) {
 		this.description = description;
@@ -117,7 +121,8 @@ public class Course implements Serializable {
 	}
 
 	/**
-	 * @param createDate the createDate to set
+	 * @param createDate
+	 *            the createDate to set
 	 */
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
@@ -131,7 +136,8 @@ public class Course implements Serializable {
 	}
 
 	/**
-	 * @param updateDate the updateDate to set
+	 * @param updateDate
+	 *            the updateDate to set
 	 */
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
@@ -145,7 +151,8 @@ public class Course implements Serializable {
 	}
 
 	/**
-	 * @param displayGridOrder the displayGridOrder to set
+	 * @param displayGridOrder
+	 *            the displayGridOrder to set
 	 */
 	public void setDisplayGridOrder(Integer displayGridOrder) {
 		this.displayGridOrder = displayGridOrder;
@@ -157,7 +164,5 @@ public class Course implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-
 
 }

@@ -8,4 +8,5 @@ import com.jga.entity.GoogleDocWidget;
  *
  */
 @Transactional
-public interface GoogleDocWidgetRepository extends WidgetBaseRepository<GoogleDocWidget> { }
+public interface GoogleDocWidgetRepository extends WidgetBaseRepository<GoogleDocWidget> {
+}

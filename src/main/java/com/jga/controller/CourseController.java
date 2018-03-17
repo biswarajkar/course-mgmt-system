@@ -23,13 +23,13 @@ import com.jga.service.ICourseService;
 public class CourseController {
 	@Autowired
 	private ICourseService courseService;
-	
+
 	@GetMapping("api/course/{id}")
 	public ResponseEntity<Course> getCourseById(@PathVariable("id") Integer id) {
 		Course course = courseService.getCourseById(id);
 		return new ResponseEntity<>(course, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("api/course")
 	public ResponseEntity<Collection<Course>> getAllCourses() {
 		Collection<Course> course = courseService.getAllCourses();

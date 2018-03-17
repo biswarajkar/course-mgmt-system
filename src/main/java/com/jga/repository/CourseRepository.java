@@ -11,6 +11,6 @@ import com.jga.entity.Course;
  * @author dey
  *
  */
-public interface CourseRepository extends CrudRepository<Course, Integer>{
+public interface CourseRepository extends CrudRepository<Course, Integer> {
 
 }
