@@ -35,4 +35,19 @@ public class CourseService implements ICourseService {
 		return courses;
 	}
 
+	@Override
+	public Course addCourse(Course c) {
+		return courseRepository.save(c);
+	}
+
+	@Override
+	public Course updateCourse(Course course) {
+		return courseRepository.save(course);
+	}
+
+	@Override
+	public void deleteCourse(Course course) {
+		courseRepository.delete(course);
+	}
+
 }
