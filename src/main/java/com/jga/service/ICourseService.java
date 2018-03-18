@@ -14,7 +14,7 @@ import com.jga.entity.Course;
 
 public interface ICourseService {
 	public Course getCourseById(int id);
-	
+
 	public Collection<Course> getAllCourses();
 	
 	public Course addCourse(Course c);

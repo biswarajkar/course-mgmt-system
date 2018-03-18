@@ -18,4 +18,5 @@ import com.jga.entity.Course;
 public interface CourseRepository extends CrudRepository<Course, Integer> {
 	@Query("select c from Course c where c.name = :name")
 	Collection<Course> findByName(@Param("name") String name);
+
 }
