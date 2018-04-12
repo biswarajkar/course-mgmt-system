@@ -1,0 +1,152 @@
+<nav id="main-navbar" class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#myNavbar">
+                <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right msk-navbar">
+                <li>
+                    <a href="#!/user/edituser/{{model.id}}"><span class="glyphicon glyphicon-user"
+                                                                  aria-hidden="true"></span>
+                        {{model.user.fname}}</a>
+                </li>
+                <li>
+                    <a href="#"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4 hidden-xs msk-dashboard">
+            <ul class="nav nav-pills nav-stacked msk-side-bar">
+                <li class="active"><a href="#!/user/{{model.user.id}}"><span class="glyphicon glyphicon-dashboard"
+                                                                             aria-hidden="true"></span> Dashboard</a>
+                </li>
+                <li ng-if="model.user.role==3">
+                    <a id="submit-homework" role="button" data-toggle="collapse" href="!#collapseSubmitHomework"
+                       aria-expanded="false" aria-controls="collapseExample">
+                        <span class="glyphicon glyphicon-chevron-right"></span> Submit Homework
+                    </a>
+                </li>
+                <div ng-if="model.user.role==3" class="collapse in" id="collapseSubmitHomework">
+                    <div class="list-group msk-list-group">
+                        <div class="not-exist"
+                             ng-if="model.registered_courses_homework==undefined || model.registered_courses_homework.length==0">
+                            No Courses...
+                        </div>
+                        <a ng-repeat="course in model.registered_courses_homework"
+                           href="#!/user/{{model.user.id}}/course/submit/assignment/{{course.courseId}}"
+                           class="list-group-item">
+                            {{course.courseNumber}}
+                            <div ng-if="course.semester=='1'" class="inline">(Spring)</div>
+                            <div ng-if="course.semester=='2'" class="inline">(Full Summer)</div>
+                            <div ng-if="course.semester=='3'" class="inline">(Summer 1)</div>
+                            <div ng-if="course.semester=='4'" class="inline">(Summer 2)</div>
+                            <div ng-if="course.semester=='5'" class="inline">(Fall)</div>
+                            <div ng-if="course.semester=='6'" class="inline">(Winter)</div>
+                            <!--<span class="badge">3</span>-->
+                        </a>
+                    </div>
+                </div>
+                <li ng-if="model.user.role==3 &&  model.registered_courses_assistant &&  model.registered_courses_assistant.length>0">
+                    <a id="assist-coursework" role="button" data-toggle="collapse" href="!#collapseAssistant"
+                       aria-expanded="false" aria-controls="collapseExample">
+                        <span id="a" class="glyphicon glyphicon-chevron-right"></span> Assist Coursework
+                    </a>
+                </li>
+                <div class="collapse in" id="collapseAssistant">
+                    <div class="list-group msk-list-group">
+                        <a ng-repeat="course in model.registered_courses_assistant"
+                           href="#!/user/{{model.user.id}}/course/{{course.courseId}}" class="list-group-item">
+                            {{course.courseNumber}}
+                            <div ng-if="course.semester=='1'" class="inline">(Spring)</div>
+                            <div ng-if="course.semester=='2'" class="inline">(Full Summer)</div>
+                            <div ng-if="course.semester=='3'" class="inline">(Summer 1)</div>
+                            <div ng-if="course.semester=='4'" class="inline">(Summer 2)</div>
+                            <div ng-if="course.semester=='5'" class="inline">(Fall)</div>
+                            <div ng-if="course.semester=='6'" class="inline">(Winter)</div>
+                            <!--<span class="badge">3</span>-->
+                        </a>
+                    </div>
+                </div>
+
+                <li ng-if="model.user.role==2">
+                    <a id="add-join-courses" role="button" data-toggle="collapse" href="!#collapseAddJoinCourses"
+                       aria-expanded="false" aria-controls="collapseAddJoinCourses">
+                        <span id="b" class="glyphicon glyphicon-chevron-right"></span> Add / Join Courses
+                    </a>
+                </li>
+                <div ng-if="model.user.role==2" class="collapse in" id="collapseAddJoinCourses">
+                    <div class="list-group msk-list-group">
+                        <a href="#!/user/{{model.user.id}}/course/join/-1" class="list-group-item">
+                            <span class="glyphicon glyphicon-log-in"></span>
+                            Join / Drop Courses
+                        </a>
+                        <a href="#!/user/{{model.user.id}}/course/modify/-1" class="list-group-item">
+                            <span class="glyphicon glyphicon-edit"></span>
+                            Add / Delete Courses
+                        </a>
+                    </div>
+                </div>
+                <li ng-if="model.user.role==2">
+                    <a id="manage-courses" role="button" data-toggle="collapse" href="!#collapseManageCourses"
+                       aria-expanded="false" aria-controls="collapseManageCourses">
+                        <span id="c" class="glyphicon glyphicon-chevron-right"></span> Manage Courses
+                    </a>
+                </li>
+                <div ng-if="model.user.role==2" class="collapse in" id="collapseManageCourses">
+                    <div class="list-group msk-list-group">
+                        <a ng-repeat="course in model.manage_courses"
+                           href="#!/user/{{model.user.id}}/course/{{course.courseId}}" class="list-group-item">
+                            {{course.courseNumber}}
+                            <div ng-if="course.semester=='1'" class="inline">(Spring)</div>
+                            <div ng-if="course.semester=='2'" class="inline">(Full Summer)</div>
+                            <div ng-if="course.semester=='3'" class="inline">(Summer 1)</div>
+                            <div ng-if="course.semester=='4'" class="inline">(Summer 2)</div>
+                            <div ng-if="course.semester=='5'" class="inline">(Fall)</div>
+                            <div ng-if="course.semester=='6'" class="inline">(Winter)</div>
+                            <!--<span class="badge">3</span>-->
+                        </a>
+                    </div>
+                </div>
+                <li>
+                    <a ng-if="model.user.role==3" href="#!/user/{{model.user.id}}"><span
+                            class="glyphicon glyphicon-plus"
+                            aria-hidden="true"></span> Join / Drop Courses</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-8 msk-user-body">
+            <div class="notifications-caption">Reset Password</div>
+            <div class="notifications-panel">
+                <h5>Email: {{model.user.email}}</h5>
+                <h5>First Name: {{model.user.fname}}</h5>
+                <h5>Last Name: {{model.user.lname}}</h5>
+                <form class="">
+                    <label for="oldpassword">Old Password</label>
+                    <input ng-model="user.oldpassword" type="text" id="oldpassword" class="form-control"
+                           placeholder="OldPassword1234"/>
+                    <label for="newpassword">New Password</label>
+                    <input ng-model="user.password" type="password" id="newpassword" class="form-control"
+                           placeholder="NewPassword@1234"/>
+                    <label for="confirmpassword">Confirm Password</label>
+                    <input ng-model="user.password" type="password" id="confirmpassword" class="form-control"
+                           placeholder="NewPassword@1234"/>
+                    <br>
+                    <a class="btn btn-primary btn-block" ng-click="model.resetpassword(user)">Reset Password</a>
+                    <a class="btn btn-danger btn-block" href="#!/user">Cancel</a>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

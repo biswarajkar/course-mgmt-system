@@ -158,11 +158,4 @@ public class Course implements Serializable {
 		this.displayGridOrder = displayGridOrder;
 	}
 
-	/**
-	 * @return the serialversionuid
-	 */
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 }
