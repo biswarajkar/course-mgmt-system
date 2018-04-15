@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jga.entity.Administrator;
-import com.jga.entity.Student;
 import com.jga.repository.AdministratorRepository;
 import com.jga.repository.BasePersonRepository;
 

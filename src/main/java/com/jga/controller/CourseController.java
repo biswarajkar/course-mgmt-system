@@ -22,12 +22,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jga.Cs5200CourseManagerApplication;
 import com.jga.entity.Course;
-<<<<<<< HEAD
 import com.jga.entity.Layout;
 import com.jga.entity.Theme;
-=======
 import com.jga.model.CourseRole;
->>>>>>> d8a1bead9f5ac6e1c7131fed96aec184a27ca52d
 import com.jga.service.ICourseService;
 import com.jga.service.ILayoutService;
 import com.jga.service.IThemeService;
@@ -59,19 +56,7 @@ public class CourseController {
 		Collection<Course> course = courseService.getAllCourses();
 		return new ResponseEntity<>(course, HttpStatus.OK);
 	}
-<<<<<<< HEAD
 
-	@PostMapping("course")
-	public ResponseEntity<Course> addArticle(@RequestBody Course course) {
-		Course newCourse = courseService.addCourse(course);
-
-		return new ResponseEntity<>(newCourse, HttpStatus.CREATED);
-	}
-
-	@PutMapping("course")
-	public ResponseEntity<Course> updateArticle(@RequestBody Course course) {
-=======
-	
 	@GetMapping("api/{userId}/courserole")
 	public ResponseEntity<Collection<CourseRole>> getCourseRoleByUser(@PathVariable("userId") int userId) {
 		Collection<CourseRole> course = courseService.getCourseRoleByPersonId(userId);
@@ -102,19 +87,12 @@ public class CourseController {
 	
 	@PutMapping("api/course")
 	public ResponseEntity<Course> updateCourse(@RequestBody Course course) {
->>>>>>> d8a1bead9f5ac6e1c7131fed96aec184a27ca52d
 		Course newCourse = courseService.updateCourse(course);
 
 		return new ResponseEntity<>(newCourse, HttpStatus.OK);
 	}
-<<<<<<< HEAD
-
-	@DeleteMapping("course")
-=======
-	
 	
 	@DeleteMapping("api/course")
->>>>>>> d8a1bead9f5ac6e1c7131fed96aec184a27ca52d
 	public ResponseEntity<Void> deleteArticle(@RequestBody Course course) {
 		courseService.deleteCourse(course);
 

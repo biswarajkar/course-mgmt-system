@@ -19,23 +19,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Role")
 public class Role implements Serializable {
-	/**
-	 * 
-	 */
-<<<<<<< HEAD
-	private static final long serialVersionUID = 1L;
 
-	@Column(name = "id", nullable = false)
-	@Id
-	protected int id;
-=======
 	private static final long serialVersionUID = -2592937593227686781L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", updatable = false, nullable = false)
     protected Integer id;
->>>>>>> d8a1bead9f5ac6e1c7131fed96aec184a27ca52d
 
 	@Column(name = "name", nullable = false)
 	protected String name;

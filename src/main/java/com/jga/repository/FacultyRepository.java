@@ -2,12 +2,8 @@ package com.jga.repository;
 
 import javax.transaction.Transactional;
 
-<<<<<<< HEAD
-=======
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
->>>>>>> d8a1bead9f5ac6e1c7131fed96aec184a27ca52d
 import com.jga.entity.Faculty;
 
 /**

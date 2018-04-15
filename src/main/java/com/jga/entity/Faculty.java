@@ -40,16 +40,11 @@ public class Faculty extends Person {
 	@Column(name = "createDate", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate = new Date();
-<<<<<<< HEAD
-
-=======
-	
 	
 	@JsonIgnore
 	@Transient
 	private final String roleType = "faculty";
 	
->>>>>>> d8a1bead9f5ac6e1c7131fed96aec184a27ca52d
 	/**
 	 * @return the facultyId
 	 */

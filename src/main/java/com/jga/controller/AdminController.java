@@ -47,37 +47,22 @@ public class AdminController {
 		Collection<Administrator> admins = adminService.getAllPersons();
 		return new ResponseEntity<>(admins, HttpStatus.OK);
 	}
-<<<<<<< HEAD
-
-	@PostMapping("api/admin")
-=======
 	
 	@PostMapping("api/administrator")
->>>>>>> d8a1bead9f5ac6e1c7131fed96aec184a27ca52d
 	public ResponseEntity<Administrator> addStudent(@RequestBody Administrator admin) {
 		Administrator newAdmin = adminService.add(admin);
 
 		return new ResponseEntity<>(newAdmin, HttpStatus.CREATED);
 	}
-<<<<<<< HEAD
 
-	@PutMapping("api/admin")
-=======
-	
 	@PutMapping("api/administrator")
->>>>>>> d8a1bead9f5ac6e1c7131fed96aec184a27ca52d
 	public ResponseEntity<Administrator> updateStudent(@RequestBody Administrator admin) {
 		Administrator newAdmin = adminService.update(admin);
 
 		return new ResponseEntity<>(newAdmin, HttpStatus.CREATED);
 	}
-<<<<<<< HEAD
-
-	@DeleteMapping("api/admin")
-=======
 	
 	@DeleteMapping("api/administrator")
->>>>>>> d8a1bead9f5ac6e1c7131fed96aec184a27ca52d
 	public ResponseEntity<Administrator> deleteStudent(@RequestBody Administrator admin) {
 		adminService.delete(admin);
 
