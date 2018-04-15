@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.jga.entity.Faculty;
 import com.jga.entity.Student;
 import com.jga.service.FacultyService;
-import com.jga.service.StudentService;
 
 /**
  * @author dey
@@ -41,25 +40,25 @@ public class FacultyController {
 		Collection<Faculty> faculties = facultyService.getAllPersons();
 		return new ResponseEntity<>(faculties, HttpStatus.OK);
 	}
-	
+
 	@PostMapping("api/faculty")
 	public ResponseEntity<Faculty> addStudent(@RequestBody Faculty faculty) {
 		Faculty newFaculty = facultyService.add(faculty);
-	
+
 		return new ResponseEntity<>(newFaculty, HttpStatus.CREATED);
 	}
-	
+
 	@PutMapping("api/faculty")
 	public ResponseEntity<Faculty> updateStudent(@RequestBody Faculty faculty) {
 		Faculty newFaculty = facultyService.update(faculty);
-	
+
 		return new ResponseEntity<>(newFaculty, HttpStatus.CREATED);
 	}
-	
+
 	@DeleteMapping("api/faculty")
 	public ResponseEntity<Student> deleteStudent(@RequestBody Faculty faculty) {
 		facultyService.delete(faculty);
-		
+
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }

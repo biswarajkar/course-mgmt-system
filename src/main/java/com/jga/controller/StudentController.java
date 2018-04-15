@@ -34,10 +34,11 @@ public class StudentController {
 		Student student = studentService.getById(id);
 		return new ResponseEntity<>(student, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("api/student/credentials")
-	public ResponseEntity<Student> getStudentByCredentials(@RequestParam(value="username",required=true) String username, 
-			@RequestParam(value="password",required=true) String password) {
+	public ResponseEntity<Student> getStudentByCredentials(
+			@RequestParam(value = "username", required = true) String username,
+			@RequestParam(value = "password", required = true) String password) {
 		Student student = studentService.findByUsernamePassword(username, password);
 		return new ResponseEntity<>(student, HttpStatus.OK);
 	}
@@ -47,25 +48,25 @@ public class StudentController {
 		Collection<Student> students = studentService.getAllPersons();
 		return new ResponseEntity<>(students, HttpStatus.OK);
 	}
-	
+
 	@PostMapping("api/student")
 	public ResponseEntity<Student> addStudent(@RequestBody Student student) {
 		Student newStudent = studentService.add(student);
-	
+
 		return new ResponseEntity<>(newStudent, HttpStatus.CREATED);
 	}
-	
+
 	@PutMapping("api/student")
 	public ResponseEntity<Student> updateStudent(@RequestBody Student student) {
 		Student newStudent = studentService.update(student);
-	
+
 		return new ResponseEntity<>(newStudent, HttpStatus.CREATED);
 	}
-	
+
 	@DeleteMapping("api/student")
 	public ResponseEntity<Student> deleteStudent(@RequestBody Student student) {
 		studentService.delete(student);
-		
+
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }

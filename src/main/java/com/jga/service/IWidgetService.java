@@ -1,9 +1,7 @@
-/**
- * 
- */
 package com.jga.service;
 
 import java.util.Collection;
+
 import com.jga.entity.Widget;
 
 /**
@@ -27,4 +25,26 @@ public interface IWidgetService {
 	 * @return a collection of all Widgets
 	 */
 	public Collection<Widget> getAllWidgets();
+
+	/**
+	 * @param wid
+	 *            The Widget to be updated
+	 * @return The newly created Widget
+	 */
+	public Widget addWidget(Widget wid);
+
+	/**
+	 * @param wid
+	 *            The Widget to be updated
+	 * @return The Widget instance after it has been updated
+	 */
+	public Widget updateWidget(Widget wid);
+
+	/**
+	 * The Widget to be deleted
+	 * 
+	 * @param wid
+	 *            The Widget instance which was deleted
+	 */
+	public void deleteWidget(Widget wid);
 }

@@ -16,10 +16,10 @@ import com.jga.entity.VerticalAlignment;
  */
 public interface IEnumService {
 	public Collection<UserAction> getUserActions();
-	
+
 	public Collection<Role> getRoles();
-	
+
 	public Collection<HorizontalAlignment> getHorizontalAlignments();
-	
+
 	public Collection<VerticalAlignment> getVerticalAlignments();
 }

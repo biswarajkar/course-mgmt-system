@@ -5,7 +5,6 @@ package com.jga.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 /**
@@ -19,24 +18,23 @@ public class CourseRolePK implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	//@Column(name = "role")
-    protected int role;
+	// @Column(name = "role")
+	protected int role;
 
-    //@Column(name = "courseId")
-    protected int courseId;
-    
-    //@Column(name = "personId")
-    protected int personId;
+	// @Column(name = "courseId")
+	protected int courseId;
 
-    public CourseRolePK() {
-    	
-    }
-    
+	// @Column(name = "personId")
+	protected int personId;
+
+	public CourseRolePK() {
+
+	}
+
 	public CourseRolePK(int role, int courseId, int personId) {
 		this.role = role;
 		this.courseId = courseId;
 		this.personId = personId;
-	}    
- 
-    
+	}
+
 }

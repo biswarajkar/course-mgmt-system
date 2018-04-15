@@ -5,8 +5,6 @@ package com.jga.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -28,7 +26,7 @@ public class Administrator extends Person {
 	private static final long serialVersionUID = 1L;
 
 	@Generated(GenerationTime.INSERT)
-	@Column(name = "adminId", insertable=false)
+	@Column(name = "adminId", insertable = false)
 	private int adminId;
 
 	/**

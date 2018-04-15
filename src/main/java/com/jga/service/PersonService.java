@@ -14,13 +14,12 @@ import com.jga.repository.BasePersonRepository;
  *
  */
 public abstract class PersonService<T extends Person> implements IPersonService<T> {
-	
+
 	protected abstract BasePersonRepository<T> getRepository();
-	
+
 	@Override
 	public T getById(int id) {
-		return getRepository()
-				.findOne(id);
+		return getRepository().findOne(id);
 	}
 
 	@Override

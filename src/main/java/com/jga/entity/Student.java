@@ -32,16 +32,13 @@ public class Student extends Person {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	
-	
 	@Generated(GenerationTime.INSERT)
-	@Column(name = "studentId", insertable=false)
+	@Column(name = "studentId", insertable = false)
 	private Integer studentId;
-	
-	@Column(name = "createDate", nullable=false)
+
+	@Column(name = "createDate", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate = new Date();
-	
 
 	/**
 	 * @return the createDate
@@ -51,7 +48,8 @@ public class Student extends Person {
 	}
 
 	/**
-	 * @param createDate the createDate to set
+	 * @param createDate
+	 *            the createDate to set
 	 */
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
@@ -65,7 +63,8 @@ public class Student extends Person {
 	}
 
 	/**
-	 * @param studentId the studentId to set
+	 * @param studentId
+	 *            the studentId to set
 	 */
 	public void setStudentId(Integer studentId) {
 		this.studentId = studentId;

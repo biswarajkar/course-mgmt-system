@@ -23,5 +23,5 @@ public class FacultyService extends PersonService<Faculty> {
 	protected BasePersonRepository<Faculty> getRepository() {
 		return repository;
 	}
-	
+
 }

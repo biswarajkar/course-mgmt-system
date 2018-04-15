@@ -6,11 +6,13 @@ package com.jga.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -42,7 +44,7 @@ public class Course implements Serializable {
 	@Column(name = "description", nullable = false)
 	private String description;
 
-	@Column(name = "createDate", nullable=false)
+	@Column(name = "createDate", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate = new Date();
 
@@ -52,6 +54,9 @@ public class Course implements Serializable {
 
 	@Column(name = "displayGridOrder")
 	private Integer displayGridOrder;
+
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "course")
+	Layout layout;
 
 	/**
 	 * @return the courseId
@@ -156,6 +161,21 @@ public class Course implements Serializable {
 	 */
 	public void setDisplayGridOrder(Integer displayGridOrder) {
 		this.displayGridOrder = displayGridOrder;
+	}
+
+	/**
+	 * @return the layout
+	 */
+	public Layout getLayout() {
+		return layout;
+	}
+
+	/**
+	 * @param layout
+	 *            the layout to set
+	 */
+	public void setLayout(Layout layout) {
+		this.layout = layout;
 	}
 
 }

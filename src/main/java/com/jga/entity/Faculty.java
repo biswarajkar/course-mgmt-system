@@ -7,8 +7,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -32,13 +30,12 @@ public class Faculty extends Person {
 	private static final long serialVersionUID = 1L;
 
 	@Generated(GenerationTime.INSERT)
-	@Column(name = "facultyId", insertable=false)
+	@Column(name = "facultyId", insertable = false)
 	private int facultyId;
-	
-	@Column(name = "createDate", nullable=false)
+
+	@Column(name = "createDate", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate = new Date();
-	
 
 	/**
 	 * @return the facultyId
@@ -58,13 +55,16 @@ public class Faculty extends Person {
 	/**
 	 * @return the createDate
 	 */
+	@Override
 	public Date getCreateDate() {
 		return createDate;
 	}
 
 	/**
-	 * @param createDate the createDate to set
+	 * @param createDate
+	 *            the createDate to set
 	 */
+	@Override
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.jga.service;
 
 import java.util.ArrayList;
@@ -21,16 +18,6 @@ public class WidgetService implements IWidgetService {
 
 	@Autowired
 	private WidgetRepository widgetRepository;
-
-	// Might be needed for CRUD operations
-	// @Autowired
-	// private HtmlWidgetRepository htmlRepository;
-	// @Autowired
-	// private ImageWidgetRepository imageRepository;
-	// @Autowired
-	// private VideoWidgetRepository videoRepository;
-	// @Autowired
-	// private GoogleDocWidgetRepository googleDocRepository;
 
 	/*
 	 * (non-Javadoc)
@@ -54,6 +41,36 @@ public class WidgetService implements IWidgetService {
 		widgetRepository.findAll().iterator().forEachRemaining(widgets::add);
 
 		return widgets;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.jga.service.IWidgetService#addWidget(com.jga.entity.Widget)
+	 */
+	@Override
+	public Widget addWidget(Widget wid) {
+		return widgetRepository.save(wid);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.jga.service.IWidgetService#updateWidget(com.jga.entity.Widget)
+	 */
+	@Override
+	public Widget updateWidget(Widget wid) {
+		return widgetRepository.save(wid);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.jga.service.IWidgetService#deleteWidget(com.jga.entity.Widget)
+	 */
+	@Override
+	public void deleteWidget(Widget wid) {
+		widgetRepository.delete(wid);
 	}
 
 }

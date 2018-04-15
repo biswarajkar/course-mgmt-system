@@ -20,23 +20,23 @@ import javax.persistence.Table;
 @Table(name = "CourseRole")
 @IdClass(CourseRolePK.class)
 public class CourseRole implements Serializable {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	@Id
-    public CourseRolePK id;
-	
-	@Column(name = "role", nullable = false, insertable=false,updatable=false)
-    protected int role;
 
-    @Column(name = "courseId", nullable = false, insertable=false,updatable=false)
-    protected int courseId;
-    
-    @Column(name = "personId", nullable = false, insertable=false,updatable=false)
-    protected int personId;
+	@Id
+	public CourseRolePK id;
+
+	@Column(name = "role", nullable = false, insertable = false, updatable = false)
+	protected int role;
+
+	@Column(name = "courseId", nullable = false, insertable = false, updatable = false)
+	protected int courseId;
+
+	@Column(name = "personId", nullable = false, insertable = false, updatable = false)
+	protected int personId;
 
 	/**
 	 * @return the role
@@ -46,7 +46,8 @@ public class CourseRole implements Serializable {
 	}
 
 	/**
-	 * @param role the role to set
+	 * @param role
+	 *            the role to set
 	 */
 	public void setRole(int role) {
 		this.role = role;
@@ -60,7 +61,8 @@ public class CourseRole implements Serializable {
 	}
 
 	/**
-	 * @param courseId the courseId to set
+	 * @param courseId
+	 *            the courseId to set
 	 */
 	public void setCourseId(int courseId) {
 		this.courseId = courseId;
@@ -74,7 +76,8 @@ public class CourseRole implements Serializable {
 	}
 
 	/**
-	 * @param personId the personId to set
+	 * @param personId
+	 *            the personId to set
 	 */
 	public void setPersonId(int personId) {
 		this.personId = personId;
@@ -89,11 +92,12 @@ public class CourseRole implements Serializable {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	@Transient
 	public void setId(CourseRolePK id) {
 		this.id = id;
 	}
-	
+
 }

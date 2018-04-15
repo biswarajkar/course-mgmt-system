@@ -17,11 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.jga.entity.Administrator;
-import com.jga.entity.Faculty;
-import com.jga.entity.Student;
 import com.jga.service.AdministratorService;
-import com.jga.service.FacultyService;
-import com.jga.service.StudentService;
 
 /**
  * @author dey
@@ -43,25 +39,25 @@ public class AdminController {
 		Collection<Administrator> admins = adminService.getAllPersons();
 		return new ResponseEntity<>(admins, HttpStatus.OK);
 	}
-	
+
 	@PostMapping("api/admin")
 	public ResponseEntity<Administrator> addStudent(@RequestBody Administrator admin) {
 		Administrator newAdmin = adminService.add(admin);
-	
+
 		return new ResponseEntity<>(newAdmin, HttpStatus.CREATED);
 	}
-	
+
 	@PutMapping("api/admin")
 	public ResponseEntity<Administrator> updateStudent(@RequestBody Administrator admin) {
 		Administrator newAdmin = adminService.update(admin);
-	
+
 		return new ResponseEntity<>(newAdmin, HttpStatus.CREATED);
 	}
-	
+
 	@DeleteMapping("api/admin")
 	public ResponseEntity<Administrator> deleteStudent(@RequestBody Administrator admin) {
 		adminService.delete(admin);
-		
+
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }

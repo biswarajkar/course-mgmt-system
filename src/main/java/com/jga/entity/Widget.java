@@ -4,14 +4,19 @@
 package com.jga.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -31,7 +36,7 @@ public class Widget implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "widgetId", updatable = false, nullable = false)
-	private int widgetId;
+	private Integer widgetId;
 
 	@Column(name = "name")
 	private String name;
@@ -72,23 +77,22 @@ public class Widget implements Serializable {
 	@Column(name = "fitContents")
 	private Boolean fitContents;
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "widgets")
+	private Set<Tab> tabs = new HashSet<>();
+
+	/**
+	 * @param tabs
+	 *            the tabs to set
+	 */
+	public void setTabs(Set<Tab> tabs) {
+		this.tabs = tabs;
 	}
 
 	/**
 	 * @return the widgetId
 	 */
-	public int getWidgetId() {
+	public Integer getWidgetId() {
 		return widgetId;
-	}
-
-	/**
-	 * @param widgetId
-	 *            the widgetId to set
-	 */
-	public void setWidgetId(int widgetId) {
-		this.widgetId = widgetId;
 	}
 
 	/**

@@ -23,9 +23,9 @@ public class StudentService extends PersonService<Student> {
 	protected BasePersonRepository<Student> getRepository() {
 		return repository;
 	}
-	
+
 	public Student findByUsernamePassword(String username, String password) {
 		return repository.findByUsernameAndPassword(username, password);
 	}
-	
+
 }

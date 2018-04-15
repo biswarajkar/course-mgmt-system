@@ -21,13 +21,13 @@ public class VerticalAlignment implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Column(name = "id", nullable = false)
 	@Id
-    protected int id;
+	protected int id;
 
-    @Column(name = "name", nullable = false)
-    protected String name;
+	@Column(name = "name", nullable = false)
+	protected String name;
 
 	/**
 	 * @return the id
@@ -44,14 +44,16 @@ public class VerticalAlignment implements Serializable {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
