@@ -11,9 +11,13 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author dey
@@ -36,7 +40,16 @@ public class Faculty extends Person {
 	@Column(name = "createDate", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate = new Date();
+<<<<<<< HEAD
 
+=======
+	
+	
+	@JsonIgnore
+	@Transient
+	private final String roleType = "faculty";
+	
+>>>>>>> d8a1bead9f5ac6e1c7131fed96aec184a27ca52d
 	/**
 	 * @return the facultyId
 	 */
@@ -67,6 +80,14 @@ public class Faculty extends Person {
 	@Override
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
+	}
+	
+	/**
+	 * @return the roleType
+	 */
+	@JsonProperty
+	public String getRoleType() {
+		return roleType;
 	}
 
 }

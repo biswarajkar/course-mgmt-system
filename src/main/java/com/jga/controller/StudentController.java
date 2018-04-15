@@ -40,6 +40,7 @@ public class StudentController {
 			@RequestParam(value = "username", required = true) String username,
 			@RequestParam(value = "password", required = true) String password) {
 		Student student = studentService.findByUsernamePassword(username, password);
+		System.out.println(student);
 		return new ResponseEntity<>(student, HttpStatus.OK);
 	}
 

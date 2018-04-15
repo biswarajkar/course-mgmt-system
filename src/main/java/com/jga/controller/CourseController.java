@@ -3,6 +3,7 @@
  */
 package com.jga.controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.apache.log4j.LogManager;
@@ -17,11 +18,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jga.Cs5200CourseManagerApplication;
 import com.jga.entity.Course;
+<<<<<<< HEAD
 import com.jga.entity.Layout;
 import com.jga.entity.Theme;
+=======
+import com.jga.model.CourseRole;
+>>>>>>> d8a1bead9f5ac6e1c7131fed96aec184a27ca52d
 import com.jga.service.ICourseService;
 import com.jga.service.ILayoutService;
 import com.jga.service.IThemeService;
@@ -53,6 +59,7 @@ public class CourseController {
 		Collection<Course> course = courseService.getAllCourses();
 		return new ResponseEntity<>(course, HttpStatus.OK);
 	}
+<<<<<<< HEAD
 
 	@PostMapping("course")
 	public ResponseEntity<Course> addArticle(@RequestBody Course course) {
@@ -63,12 +70,51 @@ public class CourseController {
 
 	@PutMapping("course")
 	public ResponseEntity<Course> updateArticle(@RequestBody Course course) {
+=======
+	
+	@GetMapping("api/{userId}/courserole")
+	public ResponseEntity<Collection<CourseRole>> getCourseRoleByUser(@PathVariable("userId") int userId) {
+		Collection<CourseRole> course = courseService.getCourseRoleByPersonId(userId);
+		return new ResponseEntity<>(course, HttpStatus.OK);
+	}
+	
+	@GetMapping("api/{userId}/course")
+	public ResponseEntity<Collection<Course>> getCourseByUser(@PathVariable("userId") int userId) {
+		Collection<CourseRole> courseRole = courseService.getCourseRoleByPersonId(userId);
+		Collection<Course> courses = new ArrayList<>();
+		if (courseRole != null) {
+			for (CourseRole cr : courseRole) {
+				courses.add(cr.getCourse());
+			}
+		}
+		
+		return new ResponseEntity<>(courses, HttpStatus.OK);
+	}
+	
+
+	@PostMapping("api/course")
+
+	public ResponseEntity<Course> addCourse(@RequestBody Course course, @RequestParam("personId") int personId, @RequestParam("roleType") String role) {
+		Course newCourse = courseService.addCourse(course, personId, role);
+		
+		return new ResponseEntity<>(newCourse, HttpStatus.CREATED);
+	}
+	
+	@PutMapping("api/course")
+	public ResponseEntity<Course> updateCourse(@RequestBody Course course) {
+>>>>>>> d8a1bead9f5ac6e1c7131fed96aec184a27ca52d
 		Course newCourse = courseService.updateCourse(course);
 
 		return new ResponseEntity<>(newCourse, HttpStatus.OK);
 	}
+<<<<<<< HEAD
 
 	@DeleteMapping("course")
+=======
+	
+	
+	@DeleteMapping("api/course")
+>>>>>>> d8a1bead9f5ac6e1c7131fed96aec184a27ca52d
 	public ResponseEntity<Void> deleteArticle(@RequestBody Course course) {
 		courseService.deleteCourse(course);
 

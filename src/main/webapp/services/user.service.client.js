@@ -33,13 +33,13 @@
             return $http.put("/api/user/" + userId, newUser);
         }
 
-        function findUserById(userId) {
-            return $http.get("/api/find/user/" + userId);
+        function findUserById(userId, roleType) {
+            return $http.get("/api/" + roleType + "/" + userId);
         }
 
-        function findUserByCredentials(username, password) {
+        function findUserByCredentials(username, password, roleType) {
             return $http({
-                url: '/api/student/credentials',
+                url: '/api/' + roleType + '/credentials',
                 method: 'GET',
                 params: {'username': username, 'password': password}
             });
@@ -52,8 +52,6 @@
                 params: {role: role}
             });
         }
-
-
 
         function deleteUser(username, password) {
             return $http.delete("/api/user" + userId);

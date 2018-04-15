@@ -7,6 +7,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -20,19 +22,36 @@ public class Role implements Serializable {
 	/**
 	 * 
 	 */
+<<<<<<< HEAD
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "id", nullable = false)
 	@Id
 	protected int id;
+=======
+	private static final long serialVersionUID = -2592937593227686781L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", updatable = false, nullable = false)
+    protected Integer id;
+>>>>>>> d8a1bead9f5ac6e1c7131fed96aec184a27ca52d
 
 	@Column(name = "name", nullable = false)
 	protected String name;
 
+    public Role() {
+    	
+    }
+    
+    public Role(Integer id, String name) {
+    	this.id = id;
+    	this.name = name;
+    }
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -47,7 +66,7 @@ public class Role implements Serializable {
 	 * @param id
 	 *            the id to set
 	 */
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

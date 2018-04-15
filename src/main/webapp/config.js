@@ -63,8 +63,15 @@
                     controller: 'ManageCourseController',
                     controllerAs: 'model'
                 })*/
+        	.when(
+                "/:roleType/:uid/add/course",
+                {
+                    templateUrl: 'views/course/templates/add-new-course.view.client.html',
+                    controller: 'AddCourseController',
+                    controllerAs: 'model'
+                })
             .when(
-                "/user/:uid",
+                "/user/:roleType/:uid",
                 {
                     templateUrl: 'views/user/templates/dashboard.view.client.html',
                     controller: 'DashboardController',
