@@ -15,19 +15,19 @@
             var isFaculty = $("#faculty").is(':checked');
 
             if (user == undefined) {
-                viewModel.errorMessage = "Please enter the following details";
+                viewModel.errorMessage = "Please enter the following details";    
             } else if (user.email == null) {
                 viewModel.errorMessage = "Email cannot be empty ";
             } else if (user.password == null) {
                 viewModel.errorMessage = "Password cannot be empty ";
             }  else if (user.username == null) {
                 viewModel.errorMessage = "Username cannot be null";
-            } else if (isProfessor == null && isStudent == null && isFaculty == null) {
+            } else if (isAdmin == null && isStudent == null && isFaculty == null) {
                 viewModel.errorMessage = "Please select a type of user";
             } else {
             	var userType = 'student';
             	if (isAdmin) {
-            		userType = 'admin';
+            		userType = 'administrator';
             	} else if (isFaculty) {
             		userType = 'faculty'
             	} 
@@ -35,7 +35,7 @@
                 promise.then(function successCallback(response) {
                     user = response.data;
                     if (user) {
-                        $location.url("/user/" + user.personId);
+                        $location.url("/user/" + user.roleType + '/' +  user.personId);
                     } else {
                         viewModel.errorMessage = "User not created";
                     }
@@ -47,11 +47,13 @@
 
         function login(user) {
             var promise = UserService.findUserByCredentials(user.username,
-                user.password);
+                user.password, user.roleType);
             promise.then(function successCallback(response) {
-                user = response.data;
+                
+            	user = response.data;
+                console.log(user);
                 if (user != "") {
-                    $location.url("/user/" + user.personId);
+                    $location.url("/user/" + user.roleType + "/" +  user.personId);
                 } else {
                     document.getElementById('login-username').style.borderColor = "red";
                     document.getElementById('login-password').style.borderColor = "red";

@@ -5,12 +5,19 @@ package com.jga.service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jga.entity.Course;
+import com.jga.entity.Role;
+import com.jga.model.CourseRole;
 import com.jga.repository.CourseRepository;
+import com.jga.repository.CourseRoleRepository;
+import com.jga.repository.RoleRepository;
 
 /**
  * @author dey
@@ -21,7 +28,13 @@ public class CourseService implements ICourseService {
 
 	@Autowired
 	private CourseRepository courseRepository;
-
+	
+	@Autowired
+	private CourseRoleRepository courseRoleRepository;
+	
+	@Autowired
+	private RoleRepository roleRepository;
+	
 	@Override
 	public Course getCourseById(int id) {
 		return courseRepository.findOne(id);
@@ -49,5 +62,44 @@ public class CourseService implements ICourseService {
 	public void deleteCourse(Course course) {
 		courseRepository.delete(course);
 	}
+
+	@Override
+	public Collection<CourseRole> getCourseRoleByPersonId(int personId) {
+		//return courseRoleRepository.findCoursesByPerson(id);
+		final List<CourseRole> courseRoles = new ArrayList<>();
+		
+		for (Course course : courseRoleRepository.findCoursesByPerson(personId)) {
+			courseRoles.add(new CourseRole(course, courseRoleRepository.findRolesByPersonAndCourse(personId, course.getCourseId())));
+		}
+		
+		return courseRoles;
+	}
+
+	@Override
+	@Transactional
+	public Course addCourse(Course course, int personId, String personType) {
+		Course newCourse = addCourse(course);
+		final String role = role(personType);
+		for (Role dbRole : roleRepository.findAll()) {
+			if (dbRole.getName().equals(role)) {
+				courseRoleRepository.insertCourseRole(personId, newCourse.getCourseId(), dbRole.getId());
+				return newCourse;
+			}
+		}
+		
+		throw new IllegalStateException("No role found");
+	}
+	
+	private String role(String personType) {
+		switch (personType) {
+			case "student": return "Viewer";
+			case "faculty": return "Owner";
+			case "administrator": return "Administrator";
+			default: throw new IllegalStateException("No mapping found for person:" + personType);
+		}
+		
+		
+	}
+	
 
 }

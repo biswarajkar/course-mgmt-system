@@ -1,0 +1,146 @@
+(function () {
+    angular
+        .module("WebAppMaker")
+        .factory("CourseService", courseService);
+
+    function courseService($http) {
+        var api = {
+            "findCourseById": findCourseById,
+            "findCourseByPersonId": findCourseByPersonId,
+            "findAllCourses" : findAllCourses,
+            "updateCourse": updateCourse,
+            "createCourse": createCourse,
+            "joinCourseIdByProfId": joinCourseIdByProfId,
+            "joinCourseIdByStudentId": joinCourseIdByStudentId,
+            "joinCourseIdByAssistantId": joinCourseIdByAssistantId,
+            "dropCourseIdByStudentId": dropCourseIdByStudentId,
+            "dropCourseIdByAssistantId":dropCourseIdByAssistantId,
+            "findAllCoursesByProfessorId": findAllCoursesByProfessorId,
+            "findAllCoursesByStudentId": findAllCoursesByStudentId,
+            "findAllCoursesByAssistantId": findAllCoursesByAssistantId,
+            "deleteCourse": deleteCourse
+        };
+        return api;
+
+
+        function createCourse(course, personId, roleType) {
+            return $http({
+                method: 'POST',
+                url: '/api/course',
+                data: JSON.stringify(course),
+                params: {
+                	'roleType' : roleType,
+                	'personId' : personId
+                }
+            });
+        }
+
+        function updateCourse(course) {
+            return $http({
+                method: 'POST',
+                url: '/api/update/course',
+                data: JSON.stringify(course)
+            });
+        }
+
+        function deleteCourse(cid) {
+            return $http({
+                method: 'DELETE',
+                url: '/api/delete/course',
+                params: {id: cid}
+            });
+        }
+
+        function findAllCourses() {
+            return $http({
+                url: '/api/course',
+                method: 'GET',
+                params: {}
+            });
+        }
+        
+        function findCourseById(cid) {
+            return $http({
+                url: '/api/find/course',
+                method: 'GET',
+                params: {id: cid}
+            });
+        }
+
+        function findCourseByPersonId(personId) {
+            return $http({
+                url: '/api/' + personId + '/course',
+                method: 'GET'
+            });
+        }
+
+        function findAllCoursesByProfessorId(id) {
+            return $http({
+                url: '/api/find/course/professor',
+                method: 'GET',
+                params: {id: id}
+            });
+        }
+
+        function joinCourseIdByProfId(cid, pid) {
+            return $http({
+                url: '/api/add/course/professor',
+                method: 'PUT',
+                params: {cid: cid, pid: pid}
+            });
+        }
+
+        function joinCourseIdByStudentId(cid, sid) {
+            var courseRegistration = new Object();
+            courseRegistration.courseId = cid;
+            courseRegistration.studentId = sid;
+            return $http({
+                method: 'POST',
+                url: '/api/create/courseregistration',
+                data: JSON.stringify(courseRegistration),
+            });
+        }
+
+        function joinCourseIdByAssistantId(cid, aid) {
+
+            return $http({
+                url: '/api/add/course/assistant',
+                method: 'POST',
+                params: {cid: cid, aid: aid}
+            });
+        }
+
+        function dropCourseIdByStudentId(cid, sid) {
+            return $http({
+                method: 'DELETE',
+                url: '/api/delete/courseregistration/by/ids',
+                params: {cid: cid, sid: sid}
+            });
+        }
+
+        function dropCourseIdByAssistantId(cid, aid) {
+            return $http({
+                method: 'DELETE',
+                url: '/api/delete/course/assistant',
+                params: {cid: cid, aid: aid}
+            });
+        }
+
+
+        function findAllCoursesByStudentId(studentId) {
+            return $http({
+                url: '/api/find/courseregistration/',
+                method: 'GET',
+                params: {sid: studentId}
+            });
+        }
+
+        function findAllCoursesByAssistantId(assistantId) {
+            return $http({
+                url: '/api/find/course/assistant',
+                method: 'GET',
+                params: {aid: assistantId}
+            });
+        }
+    }
+})();

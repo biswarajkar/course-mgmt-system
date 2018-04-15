@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jga.entity.Faculty;
+import com.jga.entity.Student;
 import com.jga.repository.BasePersonRepository;
 import com.jga.repository.FacultyRepository;
 
@@ -24,4 +25,7 @@ public class FacultyService extends PersonService<Faculty> {
 		return repository;
 	}
 	
+	public Faculty findByUsernamePassword(String username, String password) {
+		return repository.findByUsernameAndPassword(username, password);
+	}
 }

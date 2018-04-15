@@ -5,13 +5,15 @@ package com.jga.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author dey
@@ -30,7 +32,10 @@ public class Administrator extends Person {
 	@Generated(GenerationTime.INSERT)
 	@Column(name = "adminId", insertable=false)
 	private int adminId;
-
+	
+	@JsonIgnore
+	@Transient
+	private final String roleType = "administrator";
 	/**
 	 * @return the adminId
 	 */
@@ -46,4 +51,11 @@ public class Administrator extends Person {
 		this.adminId = adminId;
 	}
 
+	/**
+	 * @return the roleType
+	 */
+	@JsonProperty
+	public String getRoleType() {
+		return roleType;
+	}
 }

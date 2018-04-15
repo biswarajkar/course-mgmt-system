@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jga.entity.Administrator;
+import com.jga.entity.Student;
 import com.jga.repository.AdministratorRepository;
 import com.jga.repository.BasePersonRepository;
 
@@ -22,5 +23,9 @@ public class AdministratorService extends PersonService<Administrator> {
 	@Override
 	protected BasePersonRepository<Administrator> getRepository() {
 		return repository;
+	}
+	
+	public Administrator findByUsernamePassword(String username, String password) {
+		return repository.findByUsernameAndPassword(username, password);
 	}
 }
