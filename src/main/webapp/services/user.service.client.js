@@ -17,7 +17,6 @@
 
 
         function createUser(user, userType) {
-
             return $http({
                 method: 'POST',
                 url: '/api/' + userType,
@@ -29,8 +28,12 @@
             return $http.get("/api/user?username=" + username);
         }
 
-        function updateUser(userId, newUser) {
-            return $http.put("/api/user/" + userId, newUser);
+        function updateUser(u) {
+        	return $http({
+                method: 'PUT',
+                url: '/api/' + u.roleType,
+                data: JSON.stringify(u)
+            });
         }
 
         function findUserById(userId, roleType) {
@@ -47,14 +50,19 @@
 
         function findAllUsersByRole(role) {
             return $http({
-                url: '/api/find/user/role',
+                url: '/api/' + role,
                 method: 'GET',
-                params: {role: role}
+                params: {}
             });
         }
 
-        function deleteUser(username, password) {
-            return $http.delete("/api/user" + userId);
+        function deleteUser(user) {
+        	console.log(user);
+            return $http({
+            	url : "/api/" + user.roleType + "/delete",
+            	method: 'POST',
+            	data: JSON.stringify(user)
+            });
         }
 
    }

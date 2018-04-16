@@ -46,4 +46,10 @@ public interface CourseRoleRepository extends CrudRepository<Course, Integer> {
 	@Modifying
 	void insertCourseRole(@Param("personId") int personId, @Param("courseId") int courseId, @Param("roleId") int roleId);
 	
+	
+	
+	@Query(value="DELETE c FROM CourseRole AS c WHERE c.courseId = :courseId AND c.personId=:personId AND c.role=:roleId", nativeQuery=true)
+	@Modifying
+	void deleteCourseForPerson(@Param("personId") int personId, @Param("courseId") int courseId, @Param("roleId") int roleId);
+	
 }

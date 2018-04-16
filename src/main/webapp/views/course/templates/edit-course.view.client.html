@@ -22,7 +22,7 @@
 </nav>
 <div class="container-fluid">
     <div class="col-sm-8 msk-user-body">
-            <div class="notifications-caption">Edit User: {{model.user.username}}</div>
+            <div class="notifications-caption">Edit Course {{model.course.identifier}}</div>
             <div class="notifications-panel">
                 <div ng-show="model.errorMessage" class="alert alert-danger"
                      role="alert">
@@ -31,27 +31,21 @@
                     {{model.errorMessage}}
                 </div>
                 <div class="row">
-                    <div class="col-xs-3"><label>Username:</label></div>
-                    <div class="col-xs-6"><input ng-model="user.username" type="text" id="identifier" disabled
-                                                 class="form-control" placeholder="{{model.user.username}}"/></div>
+                    <div class="col-xs-3"><label>Course Identifer:</label></div>
+                    <div class="col-xs-6"><input ng-model="course.identifier" type="text" id="identifier" disabled
+                                                 class="form-control" placeholder="{{model.course.identifier}}"/></div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-3"><label>Role:</label></div>
-                    <div class="col-xs-6"><input ng-model="user.roleType" type="text" id="identifier" disabled
-                                                 class="form-control" placeholder="{{model.user.roleType}}"/></div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-xs-3"><label>Email:</label></div>
-                    <div class="col-xs-6"><input ng-model="user.email" type="text" id="name"
-                                                 class="form-control" placeholder="{{model.user.email}}"/>
+                    <div class="col-xs-3"><label>Name:</label></div>
+                    <div class="col-xs-6"><input ng-model="course.name" type="text" id="name"
+                                                 class="form-control" placeholder="{{model.course.name}}"/>
                     </div>
                 </div>
                 
                 <div class="row">
-                    <div class="col-xs-3"><label>Password:</label></div>
-                    <div class="col-xs-6"><input ng-model="user.password" type="password" id="description"
-                                                 class="form-control" placeholder="******"/>
+                    <div class="col-xs-3"><label>Description:</label></div>
+                    <div class="col-xs-6"><input ng-model="course.description" type="text" id="description"
+                                                 class="form-control" placeholder="{{model.course.description}}"/>
                     </div>
                 </div>
                 
@@ -60,9 +54,13 @@
                     <div class="col-xs-6">
                       <div class="btn-toolbar">
                         <a class="btn btn-danger pull-right left-margin-40"
-                           href="#!/{{model.params.roleType}}/{{model.params.personId}}/manage/{{model.params.managedRoleType}}">Cancel</a>
-                        <a class="btn btn-primary pull-right" ng-click="model.update(user)">Update
-                            User</a>
+                           href="#!/user/{{model.params.roleType}}/{{model.params.personId}}">Cancel</a>
+                        
+                        <a class="btn btn-warning pull-right left-margin-140" 
+                            ng-click="model.deleteCourse()">Delete
+                            Course</a>
+                        <a class="btn btn-primary pull-right" ng-click="model.update(course)">Update
+                            Course</a>
                      </div>
                     </div>
                 </div>

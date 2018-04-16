@@ -8,8 +8,16 @@
         var viewModel = this;
 
         function init() {
-            var userId = $routeParams['uid'];
-            var promise = UserService.findUserById(userId);
+        	var userId = $routeParams['uid'];
+            var roleType = $routeParams['roleType'];
+            
+            var managedUserId = $routeParams['manageduid'];
+            var managedRoleType = $routeParams['managedRoleType'];
+            
+            viewModel.params = { personId : userId, roleType : roleType, managedRoleType : managedRoleType};
+            
+            var promise = UserService.findUserById(managedUserId, managedRoleType);
+            
             promise.then(
                 function (user) {
                     user = user.data;
@@ -23,5 +31,52 @@
         }
 
         init();
+        
+        viewModel.update = update;
+        function update(user) {
+        	user.personId = viewModel.user.personId;
+        	user.roleType = viewModel.user.roleType;
+        	user.username = viewModel.user.username;
+        	
+        	if (viewModel.user.roleType == 'student') {
+        		user.studentId = viewModel.user.studentId;
+        	} else if (viewModel.user.roleType == 'faculty') {
+        		user.facultyId = viewModel.user.facultyId;
+        	} else {
+        		user.adminId = viewModel.user.adminId;
+        	}
+        	
+        	user.updateDate = new Date();
+        	
+        	if (user.name == null) {
+        		user.name = viewModel.user.name;
+        	}
+        	
+        	if (user.email == null) {
+        		user.email = viewModel.user.email;
+        	}
+        	
+        	if (user.password == null) {
+        		user.password = viewModel.user.password;
+        	}
+        	
+        	if (!user) {
+        		viewModel.errorMessage = "Please fill at least one field";
+        	} else {
+                var promise = UserService.updateUser(user);
+                promise.then(function successCallback(response) {
+                    user = response.data;
+                    if (user) {
+                        $location.url("/" + viewModel.params.roleType + "/" + viewModel.params.personId + "/manage/" + viewModel.params.managedRoleType);
+                    } else {
+                        init();
+                        viewModel.errorMessage = "User not updated";
+                        viewModel.successMessage = null;
+                    }
+                }, function errorCallback(response) {
+                    viewModel.errorMessage = "User not updated";
+                });
+            }
+        }
     }
 })();

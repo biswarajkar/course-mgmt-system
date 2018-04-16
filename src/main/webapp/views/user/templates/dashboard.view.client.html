@@ -37,8 +37,8 @@
 
 				<!-- Join or drop courses for students -->
 				<li>
-				<a  
-				href="#!/user/{{model.user.id}}/{{model.user.roleType}}/course/join/-1"><span
+				<a 
+				href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/manage"><span
 						class="glyphicon glyphicon-plus" aria-hidden="true"></span> Manage Courses</a> <!-- {{model.courses}} -->
 				</li>
 				<!-- End of join or drop courses for students -->
@@ -66,13 +66,13 @@
 				</a></li>
 				<div ng-if="model.user.roleType=='administrator'" class="collapse in" id="collapseManageUsers">
 					<div class="list-group msk-list-group">
-						<a href="#!/user/{{model.user.id}}/manage/user/1"
+						<a href="#!/{{model.user.roleType}}/{{model.user.personId}}/manage/administrator"
 							class="list-group-item"> <span
 							class="glyphicon glyphicon-edit"></span> Manage admins
-						</a> <a href="#!/user/{{model.user.id}}/manage/user/2"
+						</a> <a href="#!/{{model.user.roleType}}/{{model.user.personId}}/manage/faculty"
 							class="list-group-item"> <span
 							class="glyphicon glyphicon-edit"></span> Manage professors
-						</a> <a href="#!/user/{{model.user.id}}/manage/user/3"
+						</a> <a href="#!/{{model.user.roleType}}/{{model.user.personId}}/manage/student"
 							class="list-group-item"> <span
 							class="glyphicon glyphicon-edit"></span> Manage students
 						</a>
@@ -100,7 +100,7 @@
 								 </div>
 								 <div class="col-sm-1">
 							         <a class="btn btn-primary btn-body"
-                                        href="#!/{{model.user.roleType}}/{{model.user.personId}}/edit/course/{{course.id}}">Edit</a>
+                                        href="#!/{{model.user.roleType}}/{{model.user.personId}}/edit/course/{{course.courseId}}">Edit</a>
                                   </div>	
                                 </div>
 							</li>

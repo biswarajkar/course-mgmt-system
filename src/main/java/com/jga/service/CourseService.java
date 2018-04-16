@@ -62,6 +62,10 @@ public class CourseService implements ICourseService {
 	public void deleteCourse(Course course) {
 		courseRepository.delete(course);
 	}
+	
+	public void deleteCourseById(int courseId) {
+		courseRepository.deleteCourseById(courseId);
+	}
 
 	@Override
 	public Collection<CourseRole> getCourseRoleByPersonId(int personId) {
@@ -89,6 +93,35 @@ public class CourseService implements ICourseService {
 		
 		throw new IllegalStateException("No role found");
 	}
+	
+	@Transactional
+	@Override
+	public void assignCourse(int courseId, int personId, String personType) {
+		final String role = role(personType);
+		for (Role dbRole : roleRepository.findAll()) {
+			if (dbRole.getName().equals(role)) {
+				courseRoleRepository.insertCourseRole(personId, courseId, dbRole.getId());
+				return;
+			}
+		}
+		
+		throw new IllegalStateException("No role found");
+	}
+	
+	@Transactional
+	@Override
+	public void dropCourse(int courseId, int personId, String personType) {
+		final String role = role(personType);
+		for (Role dbRole : roleRepository.findAll()) {
+			if (dbRole.getName().equals(role)) {
+				courseRoleRepository.deleteCourseForPerson(personId, courseId, dbRole.getId());
+				return;
+			}
+		}
+		
+		throw new IllegalStateException("No role found");
+	}
+	
 	
 	private String role(String personType) {
 		switch (personType) {

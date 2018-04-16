@@ -1,0 +1,61 @@
+<nav id="main-navbar" class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#myNavbar">
+                <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right msk-navbar">
+                <li><a href="#!/user/edituser/{{model.user.id}}"><span
+                        class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        {{model.user.username}}</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-out"
+                        aria-hidden="true"></span> logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="col-sm-8 msk-user-body">
+            <div class="notifications-caption">Manage {{model.params.manageRoleType}}</div>
+            <div class="notifications-panel">
+                <div ng-show="model.errorMessage" class="alert alert-danger"
+                     role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign msk-msg-glyphicon"
+                      aria-hidden="true"></span> <span class="sr-only">Error:</span>
+                    {{model.errorMessage}}
+                </div>
+
+			<table id="userTable"
+				class="table table-hover table-light msk-table-list-users">
+				<tr class="msk-table-header">
+					<th style="width: 25%;">Username</th>
+					<th style="width: 25%;">Name</th>
+					<th style="width: 25%;">Email</th>
+					<th style="width: 25%;">Edit/Delete</th>
+				</tr>
+				<tr ng-repeat="u in model.allUsers">
+				    <td>{{u.username}}</td>
+				    <td>{{u.name}}</td>
+				    <td>{{u.email}}</td>
+					<td>
+					   <a class="btn btn-primary btn-body"
+						href="#!/{{model.user.roleType}}/{{model.user.personId}}/edit/{{u.roleType}}/{{u.personId}}">Edit</a>
+					   <a class="btn btn-danger btn-body"
+						ng-click="model.deleteUser(u)"
+						ng-disabled="u.personId==model.params.personId">Delete</a>
+					</td>
+				</tr>
+			</table>
+			<a class="btn btn-primary pull-left left-margin-40"
+                           href="#!/user/{{model.params.roleType}}/{{model.params.personId}}">Back</a>
+                        
+		</div>
+     </div>
+ </div>

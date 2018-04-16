@@ -56,7 +56,7 @@ public class Course implements Serializable {
 	private Integer displayGridOrder;
 
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "course")
-	Layout layout;
+	private Layout layout;
 
 	/**
 	 * @return the courseId

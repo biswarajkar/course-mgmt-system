@@ -15,7 +15,6 @@
             promise.then(
                 function (user) {
                     user = user.data;
-                    console.log(user);
                     if (user != undefined) {
                         viewModel.user = user;
                     } else {
@@ -27,7 +26,6 @@
         	            	promise.then(
         	            		function (response) {
         	                    courses = response.data;
-        	                    console.log(courses);
         	                    if (courses != undefined) {
         	                        viewModel.courses = courses;
         	                    } else {
@@ -51,9 +49,6 @@
                     }
                 }
             );
-            
-            
-            
         }
 
         init();

@@ -63,7 +63,8 @@ public class StudentController {
 
 		return new ResponseEntity<>(newStudent, HttpStatus.CREATED);
 	}
-
+	
+	@PostMapping("api/student/delete")
 	@DeleteMapping("api/student")
 	public ResponseEntity<Student> deleteStudent(@RequestBody Student student) {
 		studentService.delete(student);

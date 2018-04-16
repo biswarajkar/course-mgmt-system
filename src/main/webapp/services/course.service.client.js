@@ -10,15 +10,15 @@
             "findAllCourses" : findAllCourses,
             "updateCourse": updateCourse,
             "createCourse": createCourse,
-            "joinCourseIdByProfId": joinCourseIdByProfId,
             "joinCourseIdByStudentId": joinCourseIdByStudentId,
             "joinCourseIdByAssistantId": joinCourseIdByAssistantId,
             "dropCourseIdByStudentId": dropCourseIdByStudentId,
             "dropCourseIdByAssistantId":dropCourseIdByAssistantId,
-            "findAllCoursesByProfessorId": findAllCoursesByProfessorId,
             "findAllCoursesByStudentId": findAllCoursesByStudentId,
             "findAllCoursesByAssistantId": findAllCoursesByAssistantId,
-            "deleteCourse": deleteCourse
+            "deleteCourse": deleteCourse,
+            "assignCourse": assignCourse,
+            "dropCourse":   dropCourse
         };
         return api;
 
@@ -34,20 +34,45 @@
                 }
             });
         }
+        
+        function assignCourse(courseId, personId, roleType) {
+        	return $http({
+                method: 'PUT',
+                url: '/api/course/assign',
+                params: {
+                	'courseId': courseId,
+                	'roleType' : roleType,
+                	'personId' : personId
+                }
+            });
+        }
+        
+        function dropCourse(courseId, personId, roleType) {
+        	return $http({
+                method: 'DELETE',
+                url: '/api/course/drop',
+                params: {
+                	'courseId': courseId,
+                	'roleType' : roleType,
+                	'personId' : personId
+                }
+            });
+        }
 
         function updateCourse(course) {
             return $http({
-                method: 'POST',
-                url: '/api/update/course',
+                method: 'PUT',
+                url: '/api/course',
                 data: JSON.stringify(course)
             });
         }
 
-        function deleteCourse(cid) {
+        function deleteCourse(course) {
+        	console.log(course);
             return $http({
-                method: 'DELETE',
-                url: '/api/delete/course',
-                params: {id: cid}
+            	method: 'POST',
+            	url:'/api/course/delete', 
+                data: JSON.stringify(course)
             });
         }
 
@@ -61,9 +86,9 @@
         
         function findCourseById(cid) {
             return $http({
-                url: '/api/find/course',
+                url: '/api/course/' + cid,
                 method: 'GET',
-                params: {id: cid}
+                params: {}
             });
         }
 
@@ -71,22 +96,6 @@
             return $http({
                 url: '/api/' + personId + '/course',
                 method: 'GET'
-            });
-        }
-
-        function findAllCoursesByProfessorId(id) {
-            return $http({
-                url: '/api/find/course/professor',
-                method: 'GET',
-                params: {id: id}
-            });
-        }
-
-        function joinCourseIdByProfId(cid, pid) {
-            return $http({
-                url: '/api/add/course/professor',
-                method: 'PUT',
-                params: {cid: cid, pid: pid}
             });
         }
 

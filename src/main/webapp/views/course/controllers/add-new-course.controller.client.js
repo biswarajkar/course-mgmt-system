@@ -1,12 +1,11 @@
 (function () {
-    angular.module("WebAppMaker").controller("AddCourseController",
+    angular.module("WebAppMaker").controller("AddDropCourseController",
         AddCourseController);
 
     function AddCourseController(UserService, CourseService, $location, $routeParams) {
         var viewModel = this;
 
         function init() {
-        	//console.log('Before loading add new course');
         	var userId = $routeParams['uid'];
             var roleType = $routeParams['roleType'];
             viewModel.params = { personId : userId, roleType : roleType}; 
@@ -14,7 +13,6 @@
             promise.then(
                 function (response) {
                     var user = response.data;
-                    //console.log(user);
                     if (user != undefined) {
                         viewModel.user = user;
                     } else {
@@ -22,7 +20,6 @@
                     }
                 }
             );
-            
         }
 
         init();

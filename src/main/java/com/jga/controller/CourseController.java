@@ -78,10 +78,9 @@ public class CourseController {
 	
 
 	@PostMapping("api/course")
-
 	public ResponseEntity<Course> addCourse(@RequestBody Course course, @RequestParam("personId") int personId, @RequestParam("roleType") String role) {
 		Course newCourse = courseService.addCourse(course, personId, role);
-		
+		assignDefaultThemeToCourse(newCourse.getCourseId());
 		return new ResponseEntity<>(newCourse, HttpStatus.CREATED);
 	}
 	
@@ -92,13 +91,29 @@ public class CourseController {
 		return new ResponseEntity<>(newCourse, HttpStatus.OK);
 	}
 	
+	@PostMapping("api/course/delete")
 	@DeleteMapping("api/course")
-	public ResponseEntity<Void> deleteArticle(@RequestBody Course course) {
-		courseService.deleteCourse(course);
+	public ResponseEntity<Void> deleteCourse(@RequestBody Course course) {
+		course.setLayout(null);
+		courseService.deleteCourseById(course.getCourseId());
 
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
-
+	
+	@PutMapping("api/course/assign")
+	public ResponseEntity<Void> assignCourseToPerson(@RequestParam("courseId")int courseId, @RequestParam("personId") int personId,
+													@RequestParam("roleType") String role) {
+		courseService.assignCourse(courseId, personId, role);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+	
+	@DeleteMapping("api/course/drop")
+	public ResponseEntity<Void> dropCourseForPerson(@RequestParam("courseId")int courseId, @RequestParam("personId") int personId,
+													@RequestParam("roleType") String role) {
+		courseService.dropCourse(courseId, personId, role);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+	
 	/**
 	 * Adds a new Layout to a Course
 	 * 

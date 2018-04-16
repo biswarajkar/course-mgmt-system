@@ -62,6 +62,7 @@ public class AdminController {
 		return new ResponseEntity<>(newAdmin, HttpStatus.CREATED);
 	}
 	
+	@PostMapping("api/administrator/delete")
 	@DeleteMapping("api/administrator")
 	public ResponseEntity<Administrator> deleteStudent(@RequestBody Administrator admin) {
 		adminService.delete(admin);

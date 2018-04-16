@@ -27,4 +27,10 @@ public interface ICourseService {
 	public Collection<CourseRole> getCourseRoleByPersonId(int id);
 
 	public Course addCourse(Course course, int personId, String role);
+	
+	public void deleteCourseById(int courseId);
+
+	void assignCourse(int courseId, int personId, String personType);
+
+	void dropCourse(int courseId, int personId, String personType);
 }

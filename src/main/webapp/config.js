@@ -40,7 +40,7 @@
                 {
                     templateUrl: 'views/course/templates/add-delete-course.view.client.html',
                     controller: 'AddDeleteCourseController',
-                    controllerAs: 'model'
+                    controllerAs: 'models'
                 })
             .when(
                 "/user/:uid/course/submit/assignment/:cid",
@@ -63,6 +63,34 @@
                     controller: 'ManageCourseController',
                     controllerAs: 'model'
                 })*/
+        	.when(
+                "/:roleType/:uid/course/manage",
+                {
+                    templateUrl: 'views/course/templates/add-drop-course.view.client.html',
+                    controller: 'AddDropCourseController',
+                    controllerAs: 'model'
+                })
+        	.when(
+                "/:roleType/:uid/edit/:managedRoleType/:manageduid",
+                {
+                    templateUrl: 'views/user/templates/edit-user.view.client.html',
+                    controller: 'EditUserController',
+                    controllerAs: 'model'
+                })
+        	.when(
+                "/:roleType/:uid/manage/:manageRoleType",
+                {
+                    templateUrl: 'views/user/templates/manage-user.view.client.html',
+                    controller: 'ManageUserController',
+                    controllerAs: 'model'
+                })
+        	.when(
+                "/:roleType/:uid/edit/course/:courseId",
+                {
+                    templateUrl: 'views/course/templates/edit-course.view.client.html',
+                    controller: 'EditCourseController',
+                    controllerAs: 'model'
+                })
         	.when(
                 "/:roleType/:uid/add/course",
                 {
