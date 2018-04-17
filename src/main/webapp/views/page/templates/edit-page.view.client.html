@@ -1,0 +1,62 @@
+<nav id="main-navbar" class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#myNavbar">
+                <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right msk-navbar">
+                <li><a href="#!/user/edituser/{{model.user.id}}"><span
+                        class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        {{model.user.username}}</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-out"
+                        aria-hidden="true"></span> logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="col-sm-8 msk-user-body">
+            <div class="notifications-caption">Edit Page {{model.page.name}}</div>
+            <div class="notifications-panel">
+                <div ng-show="model.errorMessage" class="alert alert-danger"
+                     role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign msk-msg-glyphicon"
+                      aria-hidden="true"></span> <span class="sr-only">Error:</span>
+                    {{model.errorMessage}} 
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><label>Name:</label></div>
+                    <div class="col-xs-6"><input ng-model="page.name" type="text" id="identifier"
+                                                 class="form-control" placeholder="{{model.page.name}}"/></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><label>Tooltip:</label></div>
+                    <div class="col-xs-6"><input ng-model="page.tooltipDescription" type="text" id="description"
+                                                 class="form-control" placeholder="{{model.page.tooltipDescription}}"/>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-6">
+                      <div class="btn-toolbar">
+                        <a class="btn btn-danger pull-right left-margin-40"
+                           href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{model.course.courseId}}/page">Cancel</a>
+                        
+                        <a class="btn btn-warning pull-right left-margin-140" 
+                            ng-click="model.deletePage()">Delete
+                            Page</a>
+                        <a class="btn btn-primary pull-right" ng-click="model.update(page)">Update
+                            Page</a>
+                     </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

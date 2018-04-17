@@ -96,11 +96,11 @@
 							<li ng-repeat="course in model.courses" class="list-group-item"> 
 							   <div class="container-fluid">
 							     <div class="col-sm-11">  
-								    <a href="#!/{{model.user.roleType}}/{{model.user.id}}/course/{{course.courseId}}">{{course.identifier}} </a>
+								    <a href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{course.courseId}}/page">{{course.identifier}} </a>
 								 </div>
 								 <div class="col-sm-1">
 							         <a class="btn btn-primary btn-body"
-                                        href="#!/{{model.user.roleType}}/{{model.user.personId}}/edit/course/{{course.courseId}}">Edit</a>
+                                        href="#!/{{model.user.roleType}}/{{model.user.personId}}/edit/course/{{course.courseId}}/course">Edit</a>
                                   </div>	
                                 </div>
 							</li>
@@ -125,7 +125,7 @@
                             <li ng-repeat="course in model.courses" class="list-group-item"> 
                                <div class="container-fluid">
                                  <div class="col-sm-11">  
-                                    <a href="#!/{{model.user.roleType}}/{{model.user.id}}/course/{{course.courseId}}">{{course.identifier}} </a>
+                                    <a href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{course.courseId}}/page">{{course.identifier}} </a>
                                  </div>
                                 </div>
                             </li>

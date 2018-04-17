@@ -1,5 +1,5 @@
 (function () {
-    angular.module("WebAppMaker").controller("AddDropCourseController",
+    angular.module("WebAppMaker").controller("AddCourseController",
         AddCourseController);
 
     function AddCourseController(UserService, CourseService, $location, $routeParams) {

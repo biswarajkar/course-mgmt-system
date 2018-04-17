@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.jga.entity.Page;
@@ -45,6 +46,16 @@ public class PageService implements IPageService {
 	@Override
 	public void deletePage(Page page) {
 		pageRepository.delete(page);
+	}
+	
+	@Override
+	public void deleteByPageId(int pageId) {
+		pageRepository.deleteByPageId(pageId);
+	}
+	
+	@Override
+	public void updateByPageId(int pageId, String name, String tooltipDescription) {
+		pageRepository.updateByPageId(pageId, name, tooltipDescription);
 	}
 
 }

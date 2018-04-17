@@ -59,6 +59,20 @@ public class WidgetController {
 		Widget widget = widgetService.getWidgetById(id);
 		return new ResponseEntity<>(widget, HttpStatus.OK);
 	}
+	
+	@GetMapping("api/page/{pid}/widget")
+	public ResponseEntity<Collection<Widget>> getWidgetByPageId(
+			@PathVariable("pid") int pageId) {
+			Page givenPage = pageService.getPageById(pageId);
+			
+			List<Widget> widgets = new ArrayList<>();
+			
+			for (Tab tab : givenPage.getTabs()) {
+				widgets.addAll(tab.getWidgets());
+			}
+				
+			return new ResponseEntity<>(widgets, HttpStatus.OK);
+	}
 
 	/**
 	 * Retrieves a particular Widget in a given Tab of a Page in a Course

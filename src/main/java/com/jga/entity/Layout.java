@@ -22,6 +22,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jga.controller.ThemeController;
 
 /**
@@ -56,6 +57,7 @@ public class Layout implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "themeId")
+	@JsonIgnore //Theme Stop theme propagation
 	private Theme theme;
 
 	/**
@@ -93,6 +95,7 @@ public class Layout implements Serializable {
 	private String stylesheetLink;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "layout", orphanRemoval = true)
+	@JsonIgnore //Stop nested objects to propagate to the server
 	private List<Page> pages = new ArrayList<>();
 
 	/**

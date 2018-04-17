@@ -86,6 +86,8 @@ public class CourseController {
 	
 	@PutMapping("api/course")
 	public ResponseEntity<Course> updateCourse(@RequestBody Course course) {
+		Course foundCourse = courseService.getCourseById(course.getCourseId());
+		course.setLayout(foundCourse.getLayout());
 		Course newCourse = courseService.updateCourse(course);
 
 		return new ResponseEntity<>(newCourse, HttpStatus.OK);

@@ -26,7 +26,7 @@
         	            	promise.then(
         	            		function (response) {
         	                    courses = response.data;
-        	                    
+        	                    console.log(courses);
         	                    if (courses != undefined) {
         	                        viewModel.courses = courses;
         	                        

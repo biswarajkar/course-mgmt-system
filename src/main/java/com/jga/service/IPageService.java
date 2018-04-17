@@ -19,4 +19,8 @@ public interface IPageService {
 	public Page updatePage(Page page);
 
 	public void deletePage(Page page);
+
+	void deleteByPageId(int pageId);
+
+	void updateByPageId(int pageId, String name, String tooltipDescription);
 }

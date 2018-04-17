@@ -1,7 +1,8 @@
 package com.jga.entity;
 
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -11,11 +12,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "Tab")
@@ -51,12 +52,12 @@ public class Tab implements Serializable {
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "TabWidget", joinColumns = @JoinColumn(name = "tabId"), inverseJoinColumns = @JoinColumn(name = "widgetId"))
-	private Set<Widget> widgets = new HashSet<>();
+	private List<Widget> widgets = new ArrayList<>();
 
 	/**
 	 * @return the widgets
 	 */
-	public Set<Widget> getWidgets() {
+	public List<Widget> getWidgets() {
 		return widgets;
 	}
 
@@ -64,7 +65,7 @@ public class Tab implements Serializable {
 	 * @param widgets
 	 *            the widgets to set
 	 */
-	public void setWidgets(Set<Widget> widgets) {
+	public void setWidgets(List<Widget> widgets) {
 		this.widgets = widgets;
 	}
 	//

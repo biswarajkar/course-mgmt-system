@@ -4,7 +4,8 @@
 package com.jga.entity;
 
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -78,13 +79,13 @@ public class Widget implements Serializable {
 	private Boolean fitContents;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "widgets")
-	private Set<Tab> tabs = new HashSet<>();
+	private List<Tab> tabs = new ArrayList<>();
 
 	/**
 	 * @param tabs
 	 *            the tabs to set
 	 */
-	public void setTabs(Set<Tab> tabs) {
+	public void setTabs(List<Tab> tabs) {
 		this.tabs = tabs;
 	}
 

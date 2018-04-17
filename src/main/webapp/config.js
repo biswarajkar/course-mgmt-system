@@ -64,6 +64,34 @@
                     controllerAs: 'model'
                 })*/
         	.when(
+                "/:roleType/:uid/course/:courseId/page/:pageId/widget",
+                {
+                    templateUrl: 'views/widget/templates/manage-widget.view.client.html',
+                    controller: 'ManageWidgetController',
+                    controllerAs: 'model'
+                })
+        	.when(
+                "/:roleType/:uid/course/:courseId/page/add",
+                {
+                    templateUrl: 'views/page/templates/add-page.view.client.html',
+                    controller: 'AddPageController',
+                    controllerAs: 'model'
+                })
+        	.when(
+                "/:roleType/:uid/course/:courseId/page/:pageId/edit",
+                {
+                    templateUrl: 'views/page/templates/edit-page.view.client.html',
+                    controller: 'EditPageController',
+                    controllerAs: 'model'
+                })
+        	.when(
+                "/:roleType/:uid/course/:courseId/page",
+                {
+                    templateUrl: 'views/page/templates/manage-page.view.client.html',
+                    controller: 'ManagePageController',
+                    controllerAs: 'model'
+                })
+        	.when(
                 "/:roleType/:uid/course/manage",
                 {
                     templateUrl: 'views/course/templates/add-drop-course.view.client.html',
@@ -85,7 +113,7 @@
                     controllerAs: 'model'
                 })
         	.when(
-                "/:roleType/:uid/edit/course/:courseId",
+                "/:roleType/:uid/edit/course/:courseId/course",
                 {
                     templateUrl: 'views/course/templates/edit-course.view.client.html',
                     controller: 'EditCourseController',

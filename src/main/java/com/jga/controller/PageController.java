@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jga.Cs5200CourseManagerApplication;
 import com.jga.entity.Course;
@@ -137,7 +138,16 @@ public class PageController {
 			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
 		}
 	}
-
+	
+	@PutMapping("api/page/{pageId}")
+	public ResponseEntity<Page> updateByPageId(@PathVariable("pageId") int pageId, @RequestParam("name") String name, 
+			@RequestParam("tooltipDescription") String description) {
+		pageService.updateByPageId(pageId, name, description);
+		
+		return getPageById(pageId);
+	}
+	
+	
 	/**
 	 * Updates an existing Page inside a Course
 	 * 
@@ -193,6 +203,13 @@ public class PageController {
 	public ResponseEntity<Void> deletePage(@RequestBody Page page) {
 		pageService.deletePage(page);
 		logger.warn("ADMIN ALERT: Page '" + page.getPageId() + ":" + page.getName() + "' deleted successfully");
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+	
+	@DeleteMapping("api/page/{pageId}")
+	public ResponseEntity<Void> deletePage(@PathVariable("pageId") int pageId) {
+		pageService.deleteByPageId(pageId);
+		
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
