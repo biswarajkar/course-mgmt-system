@@ -39,3 +39,17 @@ jobs:
         
       # run tests!
       - run: mvn integration-test
+      
+      - run:
+          name: Deploying
+          command: eb deploy $CIRCLE_BRANCH-my-application
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
