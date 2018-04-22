@@ -12,7 +12,7 @@
             var roleType = $routeParams['roleType'];
             var courseId = $routeParams['courseId'];
             var pageId = $routeParams['pageId']; 
-            viewModel.params = { personId : userId, roleType : roleType, courseId: courseId};
+            viewModel.params = { personId : userId, roleType : roleType, courseId: courseId, pageId: pageId};
             var promise = UserService.findUserById(userId, roleType);
             promise.then(
                 function (user) {
@@ -44,8 +44,6 @@
             promise3.then(
                 function (widgets) {
                 	widgets = widgets.data;
-                	console.log(widgets);
-                	console.log(widgets);
                 	if (widgets != undefined) {
                 		viewModel.widgets = widgets;
                 	} else {
@@ -57,5 +55,25 @@
         }
         
         init();
+        
+        viewModel.deleteWidget = deleteWidget;
+        
+        function deleteWidget(widgetId) {
+        	var promise = WidgetService.deleteByWidgetId(widgetId);
+        	
+        	promise.then(function successCallback() {
+        		viewModel.errorMessage = null;
+        		init();
+        	}, function errorCallback(response) {
+                viewModel.errorMessage = "Widget cannot be deleted";
+            });
+        }
+        
+        viewModel.toYoutube = toYoutube;
+        
+        function toYoutube(url) {
+        	var equals = url.indexOf('=');
+        	return "https://www.youtube.com/embed/" + url.substring(equals + 1);
+        }
     }
 })();

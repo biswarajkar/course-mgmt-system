@@ -3,8 +3,11 @@
  */
 package com.jga.controller;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+
+import javax.transaction.Transactional;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -21,8 +24,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.jga.Cs5200CourseManagerApplication;
 import com.jga.entity.Course;
+import com.jga.entity.GoogleDocWidget;
+import com.jga.entity.HtmlWidget;
+import com.jga.entity.ImageWidget;
 import com.jga.entity.Page;
 import com.jga.entity.Tab;
+import com.jga.entity.VideoWidget;
 import com.jga.entity.Widget;
 import com.jga.service.ICourseService;
 import com.jga.service.IPageService;
@@ -358,4 +365,71 @@ public class TabController {
 			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
 		}
 	}
+	
+	@PostMapping("api/page/{pid}/imagewidget")
+	@Transactional
+	public ResponseEntity<Widget> addImageWidgetToTab(@PathVariable("pid") int pid,
+			@RequestBody ImageWidget widget) {
+		Page page = pageService.getPageById(pid);
+		
+		Tab tab = new Tab();
+		tab.setHorizontalOrder(0);
+		page.addTab(tab);
+		tab.setPage(page);
+		tab.setWidgets(Arrays.asList(widget));
+		
+		widget.setTabs(Arrays.asList(tab));
+		return new ResponseEntity<>(widgetService.addWidget(widget), HttpStatus.CREATED);
+	}
+	
+	@PostMapping("api/page/{pid}/videowidget")
+	@Transactional
+	public ResponseEntity<Widget> addVideoWidgetToTab(@PathVariable("pid") int pid,
+			@RequestBody VideoWidget widget) {
+		Page page = pageService.getPageById(pid);
+		
+		Tab tab = new Tab();
+		tab.setHorizontalOrder(0);
+		page.addTab(tab);
+		tab.setPage(page);
+		tab.setWidgets(Arrays.asList(widget));
+		
+		widget.setTabs(Arrays.asList(tab));
+		return new ResponseEntity<>(widgetService.addWidget(widget), HttpStatus.CREATED);
+	}
+	
+	
+	@PostMapping("api/page/{pid}/htmlwidget")
+	@Transactional
+	public ResponseEntity<Widget> addHTMLWidgetToTab(@PathVariable("pid") int pid,
+			@RequestBody HtmlWidget widget) {
+		Page page = pageService.getPageById(pid);
+		
+		Tab tab = new Tab();
+		tab.setHorizontalOrder(0);
+		page.addTab(tab);
+		tab.setPage(page);
+		tab.setWidgets(Arrays.asList(widget));
+		
+		widget.setTabs(Arrays.asList(tab));
+		return new ResponseEntity<>(widgetService.addWidget(widget), HttpStatus.CREATED);
+	}
+	
+	@PostMapping("api/page/{pid}/googledocwidget")
+	@Transactional
+	public ResponseEntity<Widget> addHTMLWidgetToTab(@PathVariable("pid") int pid,
+			@RequestBody GoogleDocWidget widget) {
+		Page page = pageService.getPageById(pid);
+		
+		Tab tab = new Tab();
+		tab.setHorizontalOrder(0);
+		page.addTab(tab);
+		tab.setPage(page);
+		tab.setWidgets(Arrays.asList(widget));
+		
+		widget.setTabs(Arrays.asList(tab));
+		return new ResponseEntity<>(widgetService.addWidget(widget), HttpStatus.CREATED);
+	}
+	
+	
 }

@@ -3,7 +3,6 @@ package com.jga.entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,6 +16,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Tab")
@@ -40,6 +41,7 @@ public class Tab implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "pageId")
+	@JsonIgnore
 	private Page page;
 
 	/**
@@ -52,6 +54,7 @@ public class Tab implements Serializable {
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	@JoinTable(name = "TabWidget", joinColumns = @JoinColumn(name = "tabId"), inverseJoinColumns = @JoinColumn(name = "widgetId"))
+	@JsonIgnore
 	private List<Widget> widgets = new ArrayList<>();
 
 	/**

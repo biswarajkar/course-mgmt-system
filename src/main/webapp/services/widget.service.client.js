@@ -8,22 +8,18 @@
         	"createWidget": createWidget,
             "findByWidgetId": findByWidgetId,
             "deleteByWidgetId": deleteByWidgetId,
-            "updateByWidgetId": updateByWidgetId,
+            "updateWidget": updateWidget,
             "getAllWidgetsByPage": getAllWidgetsByPage
         };
         
         
         return api;
         
-        function createWidget(pageId, widgetId, widget) {
+        function createWidget(pageId, widgetType, widget) {
             return $http({
-            	//TODO
-                //method: 'POST',
-                //url: 'api/course/' + courseId + '/page',
-                //data: JSON.stringify(page),
-                //params: {
-                	
-                //}
+                method: 'POST',
+                url: 'api/page/' + pageId + '/' + widgetType,
+                data: JSON.stringify(widget)
             });
         }
         
@@ -58,15 +54,11 @@
             });
         }
         
-        function updateByWidgetId(pageId, tabId, widget) {
+        function updateWidget(widget) {
         	return $http({
-        		//TODO
-//                method: 'PUT',
-//                url: 'api/page/' + pageId,
-//                params: {
-//                	'name' : name,
-//                	'tooltipDescription' : tooltipDescription,
-//                }
+                method: 'PUT',
+                url: 'api/' + widget.widgetType,
+                data: JSON.stringify(widget)
             });
         }
         

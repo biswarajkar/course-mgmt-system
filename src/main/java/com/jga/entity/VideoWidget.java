@@ -6,6 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author biswaraj
@@ -33,7 +37,11 @@ public class VideoWidget extends Widget {
 
 	@Column(name = "expandable")
 	private Boolean expandable;
-
+	
+	@JsonIgnore
+	@Transient
+	private final String widgetType = "videowidget";
+	
 	/**
 	 * @return the videoId
 	 */
@@ -99,6 +107,14 @@ public class VideoWidget extends Widget {
 	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	/**
+	 * @return the widgetType
+	 */
+	@JsonProperty
+	public String getWidgetType() {
+		return widgetType;
 	}
 
 }

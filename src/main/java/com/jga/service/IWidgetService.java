@@ -47,4 +47,6 @@ public interface IWidgetService {
 	 *            The Widget instance which was deleted
 	 */
 	public void deleteWidget(Widget wid);
+
+	void deleteByWidgetId(int wid);
 }

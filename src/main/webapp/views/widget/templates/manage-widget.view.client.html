@@ -34,24 +34,55 @@
 
             <li ng-repeat="w in model.widgets" class="list-group-item">
                 <div class="container-fluid">
-                    <div class="col-sm-8">
-                        <a
-                            href="#!/{{model.user.roleType}}/{{model.user.id}}/course/{{course.courseId}}/page/{{p.pageId}}">
-                            {{w.name}} 
-                        </a>
+                    <div class="col-sm-11">
+                      <div class="card">
+	                    <div class="row">{{w.name}}</div>
+	                    <img ng-if="w.widgetType=='imagewidget'" ng-src="{{w.url}}" width="350" height="350" class=" img-responsive"/>
+	                    
+	                    <div ng-if="w.widgetType=='htmlwidget'">
+	                        <p ng-bind-html="w.markupText">
+	                        </p>
+	                    </div>
+	                    
+	                    <iframe ng-if="w.widgetType=='videowidget'" width="640" height="480" ng-src="{{model.toYoutube(w.url)}}">
+	                      
+	                    </iframe>
+	                    
+	                    <div ng-if="w.widgetType=='googledocwidget'">
+	                        <div class="row"><a href="{{w.url}}" target="_blank">Link</a></div>
+		                    <iframe width="640" height="480" ng-src="{{w.url}}">
+	                          <a target="_parent" href="{{w.url}}"></a>
+	                        </iframe>
+                        </div>
+                      </div>
                     </div>
-                    <div class="col-sm-4" ng-if="model.user.roleType == 'faculty' || model.user.roleType == 'administrator'">
-                        <a class="btn btn-primary btn-body pull-right"
-                            href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{model.course.courseId}}/page/{{p.pageId}}/widget/{{w.widgetId}}edit">Edit</a>
+                    <div class="col-sm-1" ng-if="model.user.roleType == 'faculty' || model.user.roleType == 'administrator'">
+                        <div class = "btn-group-vertical">
+	                        <a class="btn btn-primary btn-body pull-right"
+	                            href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{model.params.courseId}}/page/{{model.params.pageId}}/widget/{{w.widgetId}}/edit" style="margin-bottom:10px;">Edit</a>
+	                        <a class="btn btn-danger btn-body pull-right" ng-click="model.deleteWidget(w.widgetId)">Delete</a>
+                        </div>
                     </div>
                 </div>
             </li> 
-            <div class="">
+            <div class="form-group row">
                 <a class="btn btn-primary pull-left left-margin-40"
-                           href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{model.params.courseId}}/page">Back</a>
-                           
-                <a class="btn btn-primary pull-right left-margin-40"
-                           href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{model.course.courseId}}/page/{{model.page.pageId}}/widget/add">Add Widget</a>
+                           href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{model.params.courseId}}/page" style="margin-right:10px;">Back</a>
+                <div class="btn-toolbar" ng-if="model.user.roleType == 'faculty' || model.user.roleType == 'administrator'">
+	                <div class="btn-group-vertical">           
+	                    <a class="btn btn-success pull-right left-margin-40"
+	                           href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{model.params.courseId}}/page/{{model.params.pageId}}/widget/add/videowidget" style="margin-bottom:10px;">Add Video Widget</a>
+	                
+	                    <a class="btn btn-success pull-right left-margin-40"
+	                           href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{model.params.courseId}}/page/{{model.params.pageId}}/widget/add/imagewidget" style="margin-bottom:10px;">Add Image Widget</a>
+	                    
+	                    <a class="btn btn-success pull-right left-margin-40"
+	                           href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{model.params.courseId}}/page/{{model.params.pageId}}/widget/add/htmlwidget" style="margin-bottom:10px;">Add HTML Widget</a>
+	                    
+	                    <a class="btn btn-success pull-right left-margin-40"
+	                           href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{model.params.courseId}}/page/{{model.params.pageId}}/widget/add/googledocwidget">Add GoogleDoc Widget</a>                                                    
+	                 </div>    
+                 </div>       
             </div>
                         
         </div>

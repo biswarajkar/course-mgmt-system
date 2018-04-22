@@ -4,8 +4,13 @@
         .config(Config); // previously created module "WebAppMaker"
     // angular knows that WebAppMaker is declared
 
-    function Config($routeProvider, $locationProvider) {
+    function Config($routeProvider, $locationProvider, $sceDelegateProvider) {
         $locationProvider.hashPrefix('!');
+        $sceDelegateProvider.resourceUrlWhitelist([
+            'self',
+            'https://www.youtube.com/**',
+            'https://docs.google.com/**'
+          ]);
         $routeProvider
             /*.when(
                 "/user/edituser/:uid",
@@ -63,6 +68,20 @@
                     controller: 'ManageCourseController',
                     controllerAs: 'model'
                 })*/
+        	.when(
+                "/:roleType/:uid/course/:courseId/page/:pageId/widget/:widgetId/edit",
+                {
+                    templateUrl: 'views/widget/templates/edit-widget.view.client.html',
+                    controller: 'EditWidgetController',
+                    controllerAs: 'model'
+                })
+        	.when(
+                "/:roleType/:uid/course/:courseId/page/:pageId/widget/add/:widgetType",
+                {
+                    templateUrl: 'views/widget/templates/add-new-widget.view.client.html',
+                    controller: 'AddWidgetController',
+                    controllerAs: 'model'
+                })
         	.when(
                 "/:roleType/:uid/course/:courseId/page/:pageId/widget",
                 {

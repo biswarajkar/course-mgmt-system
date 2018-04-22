@@ -1,0 +1,79 @@
+<nav id="main-navbar" class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#myNavbar">
+                <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right msk-navbar">
+                <li><a href="#!/user/edituser/{{model.user.id}}"><span
+                        class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        {{model.user.username}}</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-out"
+                        aria-hidden="true"></span> logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="col-sm-8 msk-user-body">
+            <div class="notifications-caption">Update {{model.widget.widgetType}}</div>
+            <div class="notifications-panel">
+                <div ng-show="model.errorMessage" class="alert alert-danger"
+                     role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign msk-msg-glyphicon"
+                      aria-hidden="true"></span> <span class="sr-only">Error:</span>
+                    {{model.errorMessage}}
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><label>Name:</label></div>
+                    <div class="col-xs-6"><input ng-model="widget.name" type="text" id="name"
+                                                 class="form-control" placeholder="{{model.widget.name}}"/></div>
+                </div>
+                <div class="row" ng-if="model.widget.widgetType=='videowidget'">
+                    <div class="col-xs-3"><label>Youtube Url:</label></div>
+                    <div class="col-xs-6"><input ng-model="$parent.widget.url" type="text" id="url"
+                                                 class="form-control" placeholder="{{model.widget.url}}"/>
+                    </div>
+                </div>
+                <div class="row" ng-if="model.widget.widgetType=='imagewidget'">
+                    <div class="col-xs-3"><label>Image Url:</label></div>
+                    <div class="col-xs-6"><input ng-model="$parent.widget.url" type="text" id="url"
+                                                 class="form-control" placeholder="{{model.widget.url}}"/>
+                    </div>
+                </div>
+                
+                <div class="row" ng-if="model.widget.widgetType=='googledocwidget'">
+                    <div class="col-xs-3"><label>Google Doc Url:</label></div>
+                    <div class="col-xs-6"><input ng-model="$parent.widget.url" type="text" id="url"
+                                                 class="form-control" placeholder="{{model.widget.url}}"/>
+                    </div>
+                </div>
+                
+                <div class="row" ng-if="model.widget.widgetType=='htmlwidget'">
+                    <div class="col-xs-3"><label>HTML:</label></div>
+                    <div class="col-xs-6">
+                        <textarea ng-model="$parent.widget.markupText" id="markupText"
+                                                 class="form-control" placeholder="{{model.widget.markupText}}">
+                        </textarea>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-6">
+                        <div class="btn-toolbar">
+                            <a class="btn btn-primary pull-right left-margin-20"
+                           href="#!/{{model.params.roleType}}/{{model.params.personId}}/course/{{model.params.courseId}}/page/{{model.params.pageId}}/widget">Cancel</a>
+                            <a class="btn btn-success pull-right" ng-click="model.update(widget)">Update Widget</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

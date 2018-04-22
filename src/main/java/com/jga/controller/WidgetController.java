@@ -6,6 +6,9 @@ package com.jga.controller;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.transaction.Transactional;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -21,8 +24,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.jga.Cs5200CourseManagerApplication;
 import com.jga.entity.Course;
+import com.jga.entity.GoogleDocWidget;
+import com.jga.entity.HtmlWidget;
+import com.jga.entity.ImageWidget;
 import com.jga.entity.Page;
 import com.jga.entity.Tab;
+import com.jga.entity.VideoWidget;
 import com.jga.entity.Widget;
 import com.jga.service.ICourseService;
 import com.jga.service.IPageService;
@@ -210,7 +217,43 @@ public class WidgetController {
 		}
 
 	}
-
+	
+	@PutMapping("api/imagewidget")
+	public ResponseEntity<Widget> updateWidget(@RequestBody ImageWidget widget) {
+		ImageWidget managedWidget = (ImageWidget) widgetService.getWidgetById(widget.getWidgetId());
+		managedWidget.setName(widget.getName());
+		managedWidget.setUrl(widget.getUrl());
+		
+		return new ResponseEntity<>(widgetService.updateWidget(widget), HttpStatus.OK);
+	}
+	
+	@PutMapping("api/videowidget")
+	public ResponseEntity<Widget> updateWidget(@RequestBody VideoWidget widget) {
+		VideoWidget managedWidget = (VideoWidget) widgetService.getWidgetById(widget.getWidgetId());
+		managedWidget.setName(widget.getName());
+		managedWidget.setUrl(widget.getUrl());
+		
+		return new ResponseEntity<>(widgetService.updateWidget(widget), HttpStatus.OK);
+	}
+	
+	@PutMapping("api/googledocwidget")
+	public ResponseEntity<Widget> updateWidget(@RequestBody GoogleDocWidget widget) {
+		GoogleDocWidget managedWidget = (GoogleDocWidget) widgetService.getWidgetById(widget.getWidgetId());
+		managedWidget.setName(widget.getName());
+		managedWidget.setUrl(widget.getUrl());
+		
+		return new ResponseEntity<>(widgetService.updateWidget(widget), HttpStatus.OK);
+	}
+	
+	@PutMapping("api/htmlwidget")
+	public ResponseEntity<Widget> updateWidget(@RequestBody HtmlWidget widget) {
+		HtmlWidget managedWidget = (HtmlWidget) widgetService.getWidgetById(widget.getWidgetId());
+		managedWidget.setName(widget.getName());
+		managedWidget.setMarkupText(widget.getMarkupText());
+		
+		return new ResponseEntity<>(widgetService.updateWidget(widget), HttpStatus.OK);
+	}
+	
 	/**
 	 * Updates an existing Widget inside of a given Tab in a Page of a Course
 	 * 
@@ -358,5 +401,21 @@ public class WidgetController {
 			logger.error(e.toString());
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
+	}
+	
+	@DeleteMapping("api/widget/{wid}")
+	@Transactional
+	public ResponseEntity<Void> deleteWidget(@PathVariable("wid")int widgetId) {
+		List<Integer> tabIds = widgetService.getWidgetById(widgetId)
+											.getTabs()
+											.stream()
+											.map(t -> t.getTabId())
+											.collect(Collectors.toList());
+		widgetService.deleteByWidgetId(widgetId);
+		for (int tabId : tabIds) {
+			tabService.deleteByTabId(tabId);
+		}
+		
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }

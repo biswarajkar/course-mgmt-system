@@ -18,4 +18,6 @@ public interface ITabService {
 	public Tab updateTab(Tab tab);
 
 	public void deleteTab(Tab tab);
+
+	void deleteByTabId(int tabId);
 }

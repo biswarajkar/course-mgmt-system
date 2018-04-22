@@ -72,5 +72,9 @@ public class WidgetService implements IWidgetService {
 	public void deleteWidget(Widget wid) {
 		widgetRepository.delete(wid);
 	}
-
+	
+	@Override
+	public void deleteByWidgetId(int wid) {
+		widgetRepository.deleteByWidgetId(wid);
+	}
 }

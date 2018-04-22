@@ -18,6 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * @author biswaraj
  *
@@ -53,6 +55,7 @@ public class Page implements Serializable {
 	@Column(name = "verticalOrder")
 	private Integer verticalOrder;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "layoutId")
 	private Layout layout;

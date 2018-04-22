@@ -6,6 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author biswaraj
@@ -33,7 +37,10 @@ public class GoogleDocWidget extends Widget {
 
 	@Column(name = "type")
 	private String type;
-
+	
+	@JsonIgnore
+	@Transient
+	private final String widgetType = "googledocwidget";
 	/**
 	 * @return the googleDocId
 	 */
@@ -99,6 +106,14 @@ public class GoogleDocWidget extends Widget {
 	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	/**
+	 * @return the widgetType
+	 */
+	@JsonProperty
+	public String getWidgetType() {
+		return widgetType;
 	}
 
 }

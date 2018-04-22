@@ -6,6 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author biswaraj
@@ -32,7 +36,11 @@ public class HtmlWidget extends Widget {
 
 	@Column(name = "maxCharacters")
 	private Integer maxCharacters = MAX_CHARS;
-
+	
+	@JsonIgnore
+	@Transient
+	private final String widgetType = "htmlwidget";
+	
 	/**
 	 * @return the htmlId
 	 */
@@ -83,6 +91,14 @@ public class HtmlWidget extends Widget {
 	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	/**
+	 * @return the widgetType
+	 */
+	@JsonProperty
+	public String getWidgetType() {
+		return widgetType;
 	}
 
 }

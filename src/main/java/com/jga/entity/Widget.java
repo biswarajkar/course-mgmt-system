@@ -6,7 +6,6 @@ package com.jga.entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,6 +18,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author biswaraj
@@ -79,6 +80,7 @@ public class Widget implements Serializable {
 	private Boolean fitContents;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "widgets")
+	@JsonIgnore
 	private List<Tab> tabs = new ArrayList<>();
 
 	/**
@@ -289,6 +291,13 @@ public class Widget implements Serializable {
 	 */
 	public void setFitContents(Boolean fitContents) {
 		this.fitContents = fitContents;
+	}
+
+	/**
+	 * @return the tabs
+	 */
+	public List<Tab> getTabs() {
+		return tabs;
 	}
 
 }

@@ -47,4 +47,8 @@ public class TabService implements ITabService {
 		tabRepository.delete(tab);
 	}
 
+	@Override
+	public void deleteByTabId(int tabId) {
+		tabRepository.deleteByTabId(tabId);
+	}
 }
