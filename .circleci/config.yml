@@ -57,7 +57,7 @@ jobs:
 
       - run:
           name: Deploying
-          command: eb deploy $CIRCLE_BRANCH-cs5200-course-manager-env
+          command: eb deploy master-cs5200-course-manager-env
 
 workflows:
   version: 2
