@@ -1,6 +1,6 @@
 branch-defaults:
   master:
-    environment: $CIRCLE_BRANCH-cs5200-course-manager-env
+    environment: master-cs5200-course-manager-env
 global:
   application_name: cs5200-course-mgmt-system
   default_ec2_keyname: cs5200-course-mgmt-system
