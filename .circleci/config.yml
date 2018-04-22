@@ -50,14 +50,17 @@ jobs:
     working_directory: ~/repo
     docker:
       - image: circleci/mysql:5.5
-      
-    dependencies:
-      pre:
-        - pip install awsebcli
-        - printenv
         
     steps:
       - checkout
+      
+      - run:
+          name: Installing deployment dependencies
+          working_directory: /
+          command: |
+            sudo apt-get -y -qq update
+            sudo apt-get install python-pip python-dev build-essential
+            sudo pip install awsebcli --upgrade
 
       - run:
           name: Deploying
