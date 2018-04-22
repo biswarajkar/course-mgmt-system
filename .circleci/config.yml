@@ -5,12 +5,6 @@
 version: 2
 jobs:
   build:
-  
-    dependencies:
-    pre:
-      - pip install awsebcli
-      - printenv
-
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
@@ -47,13 +41,12 @@ jobs:
       - run: mvn integration-test
   
   deploy:
-    working_directory: ~/repo
+    working_directory: ~/app
     docker:
-      - image: circleci/mysql:5.5
-        
+      - image: circleci/ruby:2.4.3
     steps:
       - checkout
-      
+
       - run:
           name: Installing deployment dependencies
           working_directory: /
