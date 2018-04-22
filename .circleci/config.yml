@@ -5,6 +5,12 @@
 version: 2
 jobs:
   build:
+  
+    dependencies:
+    pre:
+      - pip install awsebcli
+      - printenv
+
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
@@ -39,7 +45,20 @@ jobs:
         
       # run tests!
       - run: mvn integration-test
+  
+  deploy:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/mysql:5.5
       
+    dependencies:
+      pre:
+        - pip install awsebcli
+        - printenv
+        
+    steps:
+      - checkout
+
       - run:
           name: Deploying
           command: eb deploy $CIRCLE_BRANCH-cs5200-course-manager-env
