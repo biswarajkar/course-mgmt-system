@@ -18,7 +18,7 @@
 			promise
 			.then(function(response) {
 				var user = response.data;
-				//console.log(user);
+				// console.log(user);
 				if (user != undefined) {
 					viewModel.user = user;
 				} else {
@@ -33,7 +33,7 @@
 					promise
 					.then(function(response) {
 						courses = response.data;
-						console.log(courses);
+						//console.log(courses);
 						if (courses != undefined) {
 							viewModel.courses = courses;
 
@@ -70,8 +70,26 @@
 							viewModel.errorMessage = "Error loading courses";
 						}
 					});
+				} else { // admin
+					var promise = CourseService.findAllCourses();
+					promise.then(function(response) {
+						courses = response.data;
+						//console.log(courses);
+						if (courses != undefined) {
+							viewModel.courses = courses;
+
+							var courseIds = [];
+							for (var i = 0; i < courses.length; i++) {
+								courseIds
+								.push(courses[i].courseId);
+							}
+
+							viewModel.enrolledCourseIds = courseIds;
+						}
+					});
+				
 				}
-			});
+			});	
 		}
 
 		init();
@@ -97,6 +115,18 @@
 				viewModel.errorMessage = "Course could not be dropped";
 			});
 		}
+		
+		viewModel.deleteCourse = deleteCourse;
+		function deleteCourse(course) {
+			var promise = CourseService.deleteCourse(course);
+
+			promise.then(function successCallback(response) {
+				init();
+			}, function errorCallback(response) {
+				viewModel.errorMessage = "Course cannot be deleted";
+			});
+		}
+
 
 	}
 })();

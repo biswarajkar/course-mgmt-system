@@ -11,14 +11,14 @@
 
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav msk-navbar navbar-capitalized">
-				<li><font style="text-align: center; font-size: 17px;">{{model.params.roleType}}
+				<li><font style="text-align: center; font-size: 17px;">{{model.user.roleType}}
 						Home</font> <br> <font style="text-align: center; font-size: 15px;">Welcome
-						{{model.params.name}}!</font></li>
+						{{model.user.name}}!</font></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right msk-navbar">
-				<li><a href="#!/user/edituser/{{model.params.personId}}"><span
+				<li><a href="#!/user/{{model.params.roleType}}/{{model.params.personId}}/edituser"><span
 						class="glyphicon glyphicon-user" aria-hidden="true"></span>
-						{{model.params.username}}</a></li>
+						{{model.user.username}}</a></li>
 				<li><a href="#"><span class="glyphicon glyphicon-log-out"
 						aria-hidden="true"></span> logout</a></li>
 			</ul>

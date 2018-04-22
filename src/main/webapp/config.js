@@ -12,62 +12,6 @@
             'https://docs.google.com/**'
           ]);
         $routeProvider
-            /*.when(
-                "/user/edituser/:uid",
-                {
-                    templateUrl: 'views/user/templates/edit-user.view.client.html',
-                    controller: 'EditUserController',
-                    controllerAs: 'model'
-                })
-            .when(
-                "/user/:uid/course/add",
-                {
-                    templateUrl: 'views/course/templates/add-new-course.view.client.html',
-                    controller: 'AddCourseController',
-                    controllerAs: 'model'
-                })
-            .when(
-                "/user/:uid/course/join/:cid",
-                {
-                    templateUrl: 'views/course/templates/join-drop-course.view.client.html',
-                    controller: 'JoinDropCourseController',
-                    controllerAs: 'model'
-                })
-            .when(
-                "/user/:uid/course/edit/:ecid",
-                {
-                    templateUrl: 'views/course/templates/edit-course.view.client.html',
-                    controller: 'EditCourseController',
-                    controllerAs: 'model'
-                })
-            .when(
-                "/user/:uid/course/modify/:cid",
-                {
-                    templateUrl: 'views/course/templates/add-delete-course.view.client.html',
-                    controller: 'AddDeleteCourseController',
-                    controllerAs: 'models'
-                })
-            .when(
-                "/user/:uid/course/submit/assignment/:cid",
-                {
-                    templateUrl: 'views/assignment/templates/submit-assignment.view.client.html',
-                    controller: 'SubmitAssignmentController',
-                    controllerAs: 'model'
-                })
-            .when(
-                "/user/:uid/course/add/assignment/:cid",
-                {
-                    templateUrl: 'views/assignment/templates/add-assignment.view.client.html',
-                    controller: 'AddAssignmentController',
-                    controllerAs: 'model'
-                })
-            .when(
-                "/user/:uid/course/:cid",
-                {
-                    templateUrl: 'views/course/templates/manage-course.view.client.html',
-                    controller: 'ManageCourseController',
-                    controllerAs: 'model'
-                })*/
         	.when(
                 "/:roleType/:uid/course/:courseId/page/:pageId/widget/:widgetId/edit",
                 {
@@ -124,6 +68,13 @@
                     controller: 'EditUserController',
                     controllerAs: 'model'
                 })
+            .when(
+                "/:roleType/:uid/manage/:manageRoleType/add/:addRoleType",
+                {
+                    templateUrl: 'views/user/templates/add-user.view.client.html',
+                    controller: 'AddUserController',
+                    controllerAs: 'model'
+                })    
         	.when(
                 "/:roleType/:uid/manage/:manageRoleType",
                 {
@@ -150,6 +101,13 @@
                 {
                     templateUrl: 'views/user/templates/dashboard.view.client.html',
                     controller: 'DashboardController',
+                    controllerAs: 'model'
+                })
+             .when(
+                "/user/:roleType/:uid/edituser",
+                {
+                    templateUrl: 'views/user/templates/current-edit-user.view.client.html',
+                    controller: 'CurrentEditUserController',
                     controllerAs: 'model'
                 })
             .when("/", {

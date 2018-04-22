@@ -16,7 +16,7 @@
 						{{model.user.name}}!</font></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right msk-navbar">
-				<li><a href="#!/user/edituser/{{model.user.id}}"><span
+				<li><a href="#!/user/{{model.params.roleType}}/{{model.params.personId}}/edituser"><span
 						class="glyphicon glyphicon-user" aria-hidden="true"></span>
 						{{model.user.username}}</a></li>
 				<li><a href="#"><span class="glyphicon glyphicon-log-out"
@@ -121,6 +121,9 @@
 				</table>
 				<a class="btn btn-primary pull-left left-margin-40"
 					href="#!/user/{{model.params.roleType}}/{{model.params.personId}}">Back</a>
+					
+				<a class="btn btn-primary pull-right left-margin-40" ng-if="model.params.roleType=='administrator'"
+                    href="#!/{{model.params.roleType}}/{{model.params.personId}}/manage/{{model.params.manageRoleType}}/add/{{model.params.manageRoleType}}">Add {{model.params.manageRoleType}}</a>
 
 			</div>
 		</div>

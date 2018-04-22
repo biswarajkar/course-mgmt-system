@@ -17,7 +17,7 @@
 						{{model.user.name}}!</font></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right msk-navbar">
-				<li><a href="#!/user/edituser/{{model.user.id}}"><span
+				<li><a href="#!/user/{{model.params.roleType}}/{{model.params.personId}}/edituser"><span
 						class="glyphicon glyphicon-user" aria-hidden="true"></span>
 						{{model.user.username}}</a></li>
 				<li><a href="#"><span class="glyphicon glyphicon-log-out"
@@ -106,14 +106,18 @@
 					<tr class="msk-table-header">
 						<th style="width: 33%;">Identifier</th>
 						<th style="width: 33%;">Course Name</th>
-						<th style="width: 33%;">Drop</th>
+						<th ng-if="model.user.roleType!='administrator'" style="width: 33%;">Drop</th>
+						<th ng-if="model.user.roleType=='administrator'" style="width: 33%;">Delete</th>
 					</tr>
 					<tr ng-repeat="course in model.courses">
 						<td>{{course.identifier}}</td>
 						<td>{{course.name}}</td>
-						<td><a class="btn btn-danger btn-body"
+						<td ng-if="model.user.roleType!='administrator'"><a class="btn btn-danger btn-body"
 							ng-click="model.drop(course.courseId)">Drop</a>
 						</td>
+						<td ng-if="model.user.roleType=='administrator'"><a class="btn btn-danger btn-body"
+                            ng-click="model.deleteCourse(course)">Delete</a>
+                        </td>
 					</tr>
 				</table>
 				<div class="notifications-caption">Other Courses</div>
