@@ -6,4 +6,5 @@ global:
   default_ec2_keyname: cs5200-course-mgmt-system
   default_platform: Java 8 running on 64bit Amazon Linux/2.6.8
   default_region: us-east-1
+  artifact: target/cs5200-course-manager-0.0.1-SNAPSHOT.jar
   sc: gi
