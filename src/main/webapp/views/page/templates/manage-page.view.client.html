@@ -92,8 +92,12 @@
 
 
 		<div class="col-sm-8 msk-user-body">
-			<div class="notifications-caption">Manage Pages for 
-				{{model.course.identifier}}: {{model.course.name}}</div>
+			<div class="notifications-caption" ng-if="model.user.roleType == 'faculty' || model.user.roleType == 'administrator'">
+				Manage Pages for {{model.course.identifier}}: {{model.course.name}}</div>
+				
+			<div class="notifications-caption" ng-if="model.user.roleType == 'student'">
+				Pages for {{model.course.identifier}}: {{model.course.name}}</div>			
+				
 			<div class="notifications-panel">
 				<div ng-show="model.errorMessage" class="alert alert-danger"
 					role="alert">
@@ -118,13 +122,13 @@
 						</div>
 					</div>
 				</li>
-				<div class="">
-					<a class="btn btn-primary pull-left left-margin-40"
-						href="#!/user/{{model.user.roleType}}/{{model.user.personId}}">Back</a>
-
+				<br>
+				<div ng-if="model.user.roleType == 'faculty' || model.user.roleType == 'administrator'">
 					<a class="btn btn-primary pull-right left-margin-40"
-						href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{model.course.courseId}}/page/add">Add
-						Page</a>
+						        href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{model.course.courseId}}/page/add">Add Page</a>
+				</div>
+				<div>
+					<a class="btn btn-primary pull-left left-margin-40" href="#!/user/{{model.user.roleType}}/{{model.user.personId}}">Back</a>
 				</div>
 
 			</div>

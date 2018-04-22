@@ -100,9 +100,10 @@
 					ng-if="model.user.roleType=='faculty' || model.user.roleType=='administrator'"
 					class="collapse in" id="collapseManageCourses">
 					<div class="list-group msk-list-group">
+						<font style="font-size: 14px;">List of all registered Courses:</font><br>
 						<div class="not-exist"
 							ng-if="model.courses==undefined || model.courses.length==0">
-							No Courses...</div>
+							 ** You have not created or registered for any Courses **</div>
 						<div class="">
 							<li ng-repeat="course in model.courses" class="list-group-item">
 								<div class="container-fluid">
@@ -132,9 +133,10 @@
 				<div ng-if="model.user.roleType=='student'" class="collapse in"
 					id="collapseStudentCourses">
 					<div class="list-group msk-list-group">
+						<font style="font-size: 14px;">List of all enrolled Courses:</font><br>
 						<div class="not-exist"
 							ng-if="model.courses==undefined || model.courses.length==0">
-							No Courses...</div>
+							** You have not enrolled for any Courses **</div>
 						<div class="">
 							<li ng-repeat="course in model.courses" class="list-group-item">
 								<div class="container-fluid">
