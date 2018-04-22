@@ -1,0 +1,9 @@
+branch-defaults:
+  master:
+    environment: $CIRCLE_BRANCH-cs5200-course-manager-env
+global:
+  application_name: cs5200-course-mgmt-system
+  default_ec2_keyname: cs5200-course-mgmt-system
+  default_platform: Java 8 running on 64bit Amazon Linux/2.6.8
+  default_region: us-east-1
+  sc: gi
