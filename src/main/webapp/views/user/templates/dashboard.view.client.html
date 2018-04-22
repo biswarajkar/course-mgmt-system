@@ -13,8 +13,13 @@
 		</div>
 
 		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav msk-navbar navbar-capitalized">
+				<li><font style="text-align: center; font-size: 17px;">{{model.user.roleType}}
+						Home</font> <br> <font style="text-align: center; font-size: 15px;">Welcome
+						{{model.user.name}}!</font></li>
+			</ul>
 			<ul class="nav navbar-nav navbar-right msk-navbar">
-				<li><a href="#!/user/edituser/{{model.user.id}}"><span
+				<li><a href="#!/user/edit/{{model.user.id}}"><span
 						class="glyphicon glyphicon-user" aria-hidden="true"></span>
 						{{model.user.username}}</a></li>
 				<li><a href="#"><span class="glyphicon glyphicon-log-out"
@@ -29,52 +34,57 @@
 		<div class="col-sm-4 hidden-xs msk-dashboard">
 			<ul class="nav nav-pills nav-stacked msk-side-bar">
 				<!-- Dashboard for any user-->
-				<li class="active"><a href="#!/user/{{model.user.id}}"><span
+				<li class="active"><a
+					href="#!/user/{{model.user.roleType}}/{{model.user.personId}}"><span
 						class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
-						Dashboard</a>
-			    </li>
+						Dashboard</a></li>
 				<!-- End of dashboard for any user-->
 
+				<!-- -------------- -->
+				<!-- Manage Courses -->
+				<!-- -------------- -->
 				<!-- Join or drop courses for students -->
-				<li>
-				<a 
-				href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/manage"><span
-						class="glyphicon glyphicon-plus" aria-hidden="true"></span> Manage Courses</a> <!-- {{model.courses}} -->
-				</li>
+				<li ng-if="model.user.roleType=='student'"><a
+					href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/manage"><span
+						class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+						Enroll in Courses</a></li>
 				<!-- End of join or drop courses for students -->
 
+				<!-- Join or drop courses for others -->
+				<li
+					ng-if="model.user.roleType=='faculty' || model.user.roleType=='administrator'">
+					<a
+					href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/manage"><span
+						class="glyphicon glyphicon-edit" aria-hidden="true"></span> Manage
+						Courses</a>
+				</li>
 
-				<!-- Manage courses for students -->
-                <!-- <li
-                    ng-if="model.user.roleType=='student'">
-                    <a id="manage-courses" role="button" data-toggle="collapse"
-                    href="!#collapseManageCourses" aria-expanded="false"
-                    aria-controls="collapseManageCourses"> <span id="c"
-                        class="glyphicon glyphicon-chevron-right"></span> Manage Courses
-                    </a>
-                </li>
-				 -->
-				
-				
-				<!-- Manage user: Administrator -->
-				<li ng-if="model.user.roleType=='administrator'">
-				<a
+				<!-- -------------------------- -->
+				<!-- Manage User: Administrator -->
+				<!-- -------------------------- -->
+				<li ng-if="model.user.roleType=='administrator'"><a
 					id="manage-users" role="button" data-toggle="collapse"
 					href="!#collapseManageUsers" aria-expanded="false"
 					aria-controls="collapseExample"> <span
 						class="glyphicon glyphicon-chevron-right"></span> Manage Users
 				</a></li>
-				<div ng-if="model.user.roleType=='administrator'" class="collapse in" id="collapseManageUsers">
+
+
+				<div ng-if="model.user.roleType=='administrator'"
+					class="collapse in" id="collapseManageUsers">
 					<div class="list-group msk-list-group">
-						<a href="#!/{{model.user.roleType}}/{{model.user.personId}}/manage/administrator"
+						<a
+							href="#!/{{model.user.roleType}}/{{model.user.personId}}/manage/administrator"
 							class="list-group-item"> <span
-							class="glyphicon glyphicon-edit"></span> Manage admins
-						</a> <a href="#!/{{model.user.roleType}}/{{model.user.personId}}/manage/faculty"
+							class="glyphicon glyphicon-edit"></span> Manage Admins
+						</a> <a
+							href="#!/{{model.user.roleType}}/{{model.user.personId}}/manage/faculty"
 							class="list-group-item"> <span
-							class="glyphicon glyphicon-edit"></span> Manage professors
-						</a> <a href="#!/{{model.user.roleType}}/{{model.user.personId}}/manage/student"
+							class="glyphicon glyphicon-edit"></span> Manage Faculty
+						</a> <a
+							href="#!/{{model.user.roleType}}/{{model.user.personId}}/manage/student"
 							class="list-group-item"> <span
-							class="glyphicon glyphicon-edit"></span> Manage students
+							class="glyphicon glyphicon-edit"></span> Manage Students
 						</a>
 					</div>
 				</div>
@@ -83,63 +93,69 @@
 		</div>
 
 		<div class="col-sm-8 msk-user-body">
-            <div class="notifications-caption"></div>
+			<div class="notifications-caption"></div>
 			<div class="notifications-panel">
-			    <!-- Only for faculty and admin => show edit course -->
-				<div ng-if="model.user.roleType=='faculty' || model.user.roleType=='administrator'"
+				<!-- Only for faculty and admin => show edit course -->
+				<div
+					ng-if="model.user.roleType=='faculty' || model.user.roleType=='administrator'"
 					class="collapse in" id="collapseManageCourses">
 					<div class="list-group msk-list-group">
 						<div class="not-exist"
 							ng-if="model.courses==undefined || model.courses.length==0">
 							No Courses...</div>
 						<div class="">
-							<li ng-repeat="course in model.courses" class="list-group-item"> 
-							   <div class="container-fluid">
-							     <div class="col-sm-11">  
-								    <a href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{course.courseId}}/page">{{course.identifier}} </a>
-								 </div>
-								 <div class="col-sm-1">
-							         <a class="btn btn-primary btn-body"
-                                        href="#!/{{model.user.roleType}}/{{model.user.personId}}/edit/course/{{course.courseId}}/course">Edit</a>
-                                  </div>	
-                                </div>
+							<li ng-repeat="course in model.courses" class="list-group-item">
+								<div class="container-fluid">
+									<div class="col-sm-11">
+										<a
+											href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{course.courseId}}/page">{{course.identifier}}:
+											{{course.name}}</a>
+									</div>
+									<div class="col-sm-1">
+										<a class="btn btn-warning btn-body"
+											href="#!/{{model.user.roleType}}/{{model.user.personId}}/edit/course/{{course.courseId}}/course">Edit</a>
+									</div>
+								</div>
 							</li>
-							
+
 						</div>
-						
+
 					</div>
 					<div class="btn-group pull-left row" style="padding-left: 35px;">
-					   <a class="btn btn-primary btn-body"
-                                        href="#!/{{model.user.roleType}}/{{model.user.personId}}/add/course">Add Course</a>
-                    </div>
+						<a class="btn btn-primary btn-body"
+							href="#!/{{model.user.roleType}}/{{model.user.personId}}/add/course">Add
+							Course</a>
+					</div>
 				</div>
-                
-                <!-- For students -->
-                <div ng-if="model.user.roleType=='student'"
-                    class="collapse in" id="collapseStudentCourses">
-                    <div class="list-group msk-list-group">
-                        <div class="not-exist"
-                            ng-if="model.courses==undefined || model.courses.length==0">
-                            No Courses...</div>
-                        <div class="">
-                            <li ng-repeat="course in model.courses" class="list-group-item"> 
-                               <div class="container-fluid">
-                                 <div class="col-sm-11">  
-                                    <a href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{course.courseId}}/page">{{course.identifier}} </a>
-                                 </div>
-                                </div>
-                            </li>
-                            
-                        </div>
-                        
-                    </div>
-                    <div ng-if="model.user.roleType=='faculty' || model.user.roleType=='administrator'" 
-                    class="btn-group pull-left row" style="padding-left: 35px;">
-                       <a class="btn btn-primary btn-body"
-                                        href="#!/{{model.user.roleType}}/{{model.user.personId}}/add/course">Add Course</a>
-                    </div>
-                </div>
-                
+
+				<!-- For students -->
+				<div ng-if="model.user.roleType=='student'" class="collapse in"
+					id="collapseStudentCourses">
+					<div class="list-group msk-list-group">
+						<div class="not-exist"
+							ng-if="model.courses==undefined || model.courses.length==0">
+							No Courses...</div>
+						<div class="">
+							<li ng-repeat="course in model.courses" class="list-group-item">
+								<div class="container-fluid">
+									<div class="col-sm-11">
+										<a
+											href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{course.courseId}}/page">{{course.identifier}}:
+											{{course.name}} </a>
+									</div>
+								</div>
+							</li>
+						</div>
+					</div>
+					<div
+						ng-if="model.user.roleType=='faculty' || model.user.roleType=='administrator'"
+						class="btn-group pull-left row" style="padding-left: 35px;">
+						<a class="btn btn-primary btn-body"
+							href="#!/{{model.user.roleType}}/{{model.user.personId}}/add/course">Add
+							Course</a>
+					</div>
+				</div>
+
 
 			</div>
 		</div>
