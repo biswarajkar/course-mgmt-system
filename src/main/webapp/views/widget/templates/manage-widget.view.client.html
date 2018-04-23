@@ -123,9 +123,8 @@
                     </div>
                     <div class="col-sm-1" ng-if="model.user.roleType == 'faculty' || model.user.roleType == 'administrator'">
                         <div class = "btn-group-vertical">
-	                        <a class="btn btn-warning btn-body pull-right"
-	                            href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{model.params.courseId}}/page/{{model.params.pageId}}/widget/{{w.widgetId}}/edit" style="margin-bottom:10px;">Edit</a>
-	                        <a class="btn btn-danger btn-body pull-right" ng-click="model.deleteWidget(w.widgetId)">Delete</a>
+	                        <a class="glyphicon glyphicon-pencil" href="#!/{{model.user.roleType}}/{{model.user.personId}}/course/{{model.params.courseId}}/page/{{model.params.pageId}}/widget/{{w.widgetId}}/edit"></a>&nbsp;</a>
+	                        <a  class="glyphicon glyphicon-remove" ng-click="model.deleteWidget(w.widgetId)">&nbsp;</a>
                         </div>
                     </div>
                 </div>

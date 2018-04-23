@@ -30,6 +30,19 @@
 						+ userId;
 				}
 			});
+			
+			var promise2 = UserService.findUserById(userId,
+					roleType);
+
+			promise2.then(function(user) {
+				user = user.data;
+				if (user != undefined) {
+					viewModel.params.user = user;
+				} else {
+					viewModel.errorMessage = "Error while loading user by ID:"
+						+ userId;
+				}
+			});
 		}
 
 		init();

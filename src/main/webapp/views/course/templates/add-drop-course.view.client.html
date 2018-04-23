@@ -120,9 +120,10 @@
                         </td>
 					</tr>
 				</table>
-				<div class="notifications-caption">Other Courses</div>
+				<div class="notifications-caption" ng-if="model.params.roleType!='administrator'">Other Courses</div>
 				<table id="otherCoursesTable"
-					class="table table-hover table-light msk-table-list-users">
+					class="table table-hover table-light msk-table-list-users"
+					ng-if="model.params.roleType!='administrator'">
 					<tr class="msk-table-header">
 						<th style="width: 33%;">Identifier</th>
 						<th style="width: 33%;">Course Name</th>
