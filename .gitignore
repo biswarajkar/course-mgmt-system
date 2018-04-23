@@ -6,6 +6,7 @@ target/maven-status/
 target/surefire-reports/
 target/test-classes/
 target/cs5200-course-mgmt-system-0.0.1-SNAPSHOT/
+target/
 
 .classpath
 .jsdtscope
