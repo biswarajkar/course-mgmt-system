@@ -2,9 +2,6 @@
 This is the git repository for the **Spring 2018** project **Course Management System using SpringBoot (CourseNext)** at Northeastern University.
 The project is mentored by **Prof. Jose Annunziato** and is executed by **Biswaraj Kar** and **Bishwajeet Dey**.
 
-![Build Status](https://circleci.com/gh/biswarajkar/cs5200-course-mgmt-system/tree/master.svg?sanitize=true)
-<img src="https://circleci.com/gh/biswarajkar/cs5200-course-mgmt-system/tree/master.svg?sanitize=true">
-
 Below are the main pages for the project:
 * [Project](https://github.com/biswarajkar/cs5200-course-mgmt-system/wiki/Project)
 * [Design](https://github.com/biswarajkar/cs5200-course-mgmt-system/wiki/Design)
