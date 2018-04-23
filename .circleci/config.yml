@@ -57,7 +57,7 @@ jobs:
 
       - run:
           name: Deploying
-          command: eb deploy master-cs5200-course-manager-env
+          command: eb deploy cs5200-course-manager-env
 
 workflows:
   version: 2
